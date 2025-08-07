@@ -31,8 +31,13 @@ matches.jsonl
 matches_filtered.jsonl
 global_matches_downloaded.json
 hierarchical_clusters.csv
-hierarchical_clusters_detailed_analysis/
-*.csv
+
+# KEEP these CSV files for Streamlit deployment:
+# hierarchical_clusters_main_clusters_analysis.csv
+# hierarchical_clusters_detailed_analysis/
+# items_mapping.csv
+# traits_mapping.csv
+# units_mapping.csv
 
 # Local database
 *.db

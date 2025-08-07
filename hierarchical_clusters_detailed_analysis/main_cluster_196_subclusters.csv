@@ -1,0 +1,10 @@
+sub_cluster_id,size,top_8_units,avg_place,winrate,top4_rate
+301,15,"Carry_Samira, Carry_Sett, Carry_Volibear, Carry_Gwen, Carry_Yone, Lux, Naafiri, Xin_Zhao",3.07,13.3%,80.0%
+380,8,"Carry_Volibear, Carry_Braum, Carry_Gwen, Carry_Yone, Carry_Twisted_Fate, Ryze, Karma, JarvanIV",3.25,37.5%,75.0%
+961,6,"Carry_Volibear, Carry_Gwen, Carry_Yone, Carry_Zyra, Braum, Xin_Zhao, Ryze, Karma",3.33,16.7%,83.3%
+1174,5,"Carry_Ryze, Carry_JarvanIV, Carry_Volibear, Carry_Gwen, Karma, Galio, Xin_Zhao, Braum",3.60,40.0%,60.0%
+322,8,"Xin_Zhao, Ryze, Carry_JarvanIV, Carry_Volibear, Carry_Gwen, Carry_Yone, Galio, Karma",5.62,0.0%,37.5%
+930,7,"Ryze, Karma, Carry_JarvanIV, Carry_Volibear, Carry_Gwen, Galio, Xin_Zhao, Braum",5.71,14.3%,14.3%
+1790,6,"Carry_Ryze, JarvanIV, Carry_Volibear, Carry_Gwen, Galio, Xin_Zhao, Karma, Zyra",5.83,0.0%,16.7%
+1634,8,"Carry_Volibear, Carry_Gwen, Samira, Sett, Braum, Shen, Yasuo, Lux",6.62,0.0%,0.0%
+642,17,"Carry_Volibear, Carry_Gwen, Carry_Yone, Karma, Galio, Xin_Zhao, Ryze, JarvanIV",6.65,0.0%,5.9%

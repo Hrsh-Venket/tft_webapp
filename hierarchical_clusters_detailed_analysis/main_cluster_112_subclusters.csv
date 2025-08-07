@@ -1,0 +1,6 @@
+sub_cluster_id,size,top_8_units,avg_place,winrate,top4_rate
+1208,15,"Carry_Swain, Carry_Ashe, Carry_Leona, Carry_Zyra, Vi, Janna, Syndra, Udyr",5.20,6.7%,33.3%
+2108,5,"Carry_Ashe, Carry_Leona, Carry_Lee_Sin, Udyr, Swain, Vi, Janna, Zyra",5.40,0.0%,20.0%
+1953,8,"Vi, Janna, Swain, Carry_Ashe, Carry_Leona, Carry_Zyra, Syndra, Udyr",7.12,0.0%,0.0%
+1298,8,"Vi, Janna, Carry_Swain, Carry_Ashe, Carry_Leona, Syndra, Dr._Mundo, Zyra",7.62,0.0%,0.0%
+1477,12,"Carry_Ashe, Carry_Leona, Vi, Janna, Swain, Syndra, Udyr, Neeko",7.92,0.0%,0.0%

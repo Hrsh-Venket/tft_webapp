@@ -1,0 +1,14 @@
+sub_cluster_id,size,top_8_units,avg_place,winrate,top4_rate
+1583,7,"Carry_Garen, Carry_g3star_Katarina, Carry_Jayce, Carry_Leona, Carry_Ryze, Carry_Yuumi, Ezreal, Rakan",2.29,42.9%,85.7%
+1386,8,"Ezreal, Carry_s3star_Garen, Carry_s3star_Katarina, Carry_s3star_Caitlyn, Carry_Yuumi, Leona, s3star_Jayce, s3star_Rakan",3.62,25.0%,62.5%
+1063,15,"Carry_Garen, Carry_s3star_Katarina, Carry_Jayce, Carry_Leona, Carry_Yuumi, Ezreal, Rakan, Ryze",3.93,13.3%,46.7%
+1337,19,"Carry_s3star_Garen, Carry_Rakan, Carry_s3star_Katarina, Carry_Yuumi, Ezreal, Jayce, Leona, Ryze",4.68,10.5%,47.4%
+782,15,"Carry_s3star_Garen, Rakan, Carry_g3star_Katarina, Carry_Jayce, Carry_Yuumi, Ezreal, Leona, Ryze",4.87,13.3%,46.7%
+1180,6,"Ezreal, Carry_s3star_Garen, Carry_s3star_Rakan, Carry_g3star_Katarina, Jayce, Carry_Ryze, Yuumi, Leona",5.17,16.7%,33.3%
+1527,5,"Ezreal, Carry_Garen, Rakan, Carry_s3star_Katarina, Carry_Ryze, Carry_Yuumi, Leona, Jayce",6.00,0.0%,0.0%
+1024,34,"Carry_s3star_Garen, Carry_s3star_Katarina, Carry_Yuumi, Rakan, Jayce, Ezreal, Ryze, Leona",6.06,0.0%,17.6%
+2284,5,"Carry_Garen, Carry_s3star_Katarina, Carry_Caitlyn, Jayce, Ezreal, Rakan, Yuumi, Leona",6.20,0.0%,20.0%
+1555,5,"Ezreal, Carry_g3star_Garen, Rakan, Carry_g3star_Katarina, Carry_s3star_Jayce, Leona, Yuumi, Ryze",6.40,0.0%,0.0%
+506,6,"Ezreal, Carry_s3star_Garen, Rakan, Carry_g3star_Katarina, Carry_Ryze, Leona, Jayce, Yuumi",6.67,0.0%,0.0%
+1949,8,"Rakan, Carry_s3star_Katarina, Carry_Caitlyn, Jayce, Ezreal, s3star_Garen, Yuumi, Leona",7.00,0.0%,0.0%
+1509,24,"Carry_Garen, Carry_Katarina, Rakan, Ezreal, Jayce, Leona, Caitlyn, Yuumi",7.67,0.0%,0.0%

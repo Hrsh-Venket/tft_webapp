@@ -1,0 +1,6 @@
+sub_cluster_id,size,top_8_units,avg_place,winrate,top4_rate
+1919,5,"Ezreal, Carry_Garen, Carry_s3star_Caitlyn, Carry_Leona, Carry_Yuumi, Carry_Varus, Rakan, Jayce",2.60,20.0%,80.0%
+675,6,"Carry_Leona, Carry_Yuumi, Carry_Seraphine, Carry_Varus, Rakan, Ezreal, Garen, Caitlyn",3.33,0.0%,83.3%
+2102,6,"Garen, Carry_Malzahar, Carry_Leona, Carry_Yuumi, Carry_Varus, Ezreal, Rakan, K'Sante",4.33,0.0%,66.7%
+880,13,"Ezreal, Rakan, Carry_Leona, Carry_Yuumi, Carry_Varus, Garen, Caitlyn, Jayce",4.46,0.0%,46.1%
+688,6,"Carry_Leona, Carry_Varus, Carry_Twisted_Fate, Garen, Jhin, Swain, Caitlyn, Braum",6.00,0.0%,16.7%

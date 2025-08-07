@@ -1,0 +1,15 @@
+sub_cluster_id,size,top_8_units,avg_place,winrate,top4_rate
+1938,6,"Kobuko, Udyr, Carry_Yasuo, Carry_Ryze, Carry_JarvanIV, Carry_Yone, Carry_Zyra, Galio",1.83,33.3%,100.0%
+448,15,"Kobuko, Carry_Udyr, Carry_Yasuo, Carry_Ryze, Carry_Yone, Carry_Galio, Aatrox, Senna",3.27,20.0%,73.3%
+415,10,"Kobuko, Carry_Yasuo, Carry_Ryze, Carry_Lee_Sin, Carry_Yone, Udyr, JarvanIV, Galio",3.70,20.0%,70.0%
+717,10,"Zac, Kobuko, Janna, Udyr, Carry_Yasuo, Carry_K'Sante, Carry_Ryze, Carry_JarvanIV",3.70,10.0%,80.0%
+479,6,"Kobuko, Carry_Udyr, Carry_s3star_Yasuo, Carry_Senna, Carry_Ryze, Carry_JarvanIV, Galio, Aatrox",4.17,16.7%,50.0%
+1407,8,"Kobuko, Udyr, Carry_Yasuo, Carry_Ryze, Carry_JarvanIV, Carry_Lee_Sin, Galio, Aatrox",4.38,12.5%,50.0%
+1300,5,"Kobuko, Gangplank, Udyr, Carry_Yasuo, Carry_Ryze, Carry_Karma, Carry_JarvanIV, Carry_Galio",4.40,0.0%,60.0%
+1046,9,"Aatrox, Udyr, Carry_Yasuo, Carry_Ryze, JarvanIV, Carry_Yone, Carry_Galio, Kobuko",4.44,11.1%,55.6%
+146,47,"Kobuko, Udyr, Carry_Yasuo, Carry_Ryze, Carry_JarvanIV, Carry_Yone, Galio, Senna",4.62,6.4%,42.5%
+855,5,"Kobuko, Udyr, Carry_Yasuo, Carry_Akali, Carry_Ryze, Carry_JarvanIV, Carry_Yone, Galio",4.80,0.0%,60.0%
+764,25,"Kobuko, Udyr, Carry_Yasuo, Carry_Ryze, Carry_Yone, Galio, JarvanIV, Senna",5.68,0.0%,24.0%
+360,73,"Kobuko, Carry_Yasuo, Carry_Ryze, Carry_JarvanIV, Udyr, Galio, Senna, Aatrox",6.53,0.0%,11.0%
+1237,6,"Kobuko, Udyr, Carry_Yasuo, Carry_Ryze, Carry_Zyra, JarvanIV, Aatrox, Senna",6.83,0.0%,0.0%
+430,30,"Carry_Yasuo, Carry_Ryze, Kobuko, Udyr, JarvanIV, Galio, Senna, Aatrox",7.40,0.0%,3.3%

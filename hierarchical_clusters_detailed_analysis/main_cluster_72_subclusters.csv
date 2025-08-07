@@ -1,0 +1,6 @@
+sub_cluster_id,size,top_8_units,avg_place,winrate,top4_rate
+2062,5,"Ezreal, Carry_Rakan, Carry_s3star_Rammus, Carry_g3star_Malzahar, Carry_K'Sante, Carry_Yuumi, Carry_Seraphine, Syndra",1.80,40.0%,100.0%
+917,19,"Carry_Rakan, Carry_s3star_Rammus, Carry_g3star_Malzahar, Carry_K'Sante, Carry_Yuumi, Ezreal, Syndra, Seraphine",3.00,10.5%,84.2%
+359,9,"Carry_g3star_Rammus, Carry_s3star_Malzahar, Carry_K'Sante, Carry_Seraphine, Yuumi, Ezreal, Syndra, Rakan",4.78,22.2%,33.3%
+515,20,"Carry_s3star_Rammus, Carry_s3star_Malzahar, Carry_K'Sante, Ezreal, Syndra, Rakan, Yuumi, Seraphine",6.00,10.0%,15.0%
+835,29,"Carry_s3star_Rammus, Carry_Malzahar, Ezreal, Syndra, Yuumi, K'Sante, Rakan, Seraphine",7.14,0.0%,0.0%

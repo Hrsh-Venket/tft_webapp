@@ -1,0 +1,4 @@
+sub_cluster_id,size,top_8_units,avg_place,winrate,top4_rate
+1603,13,"Lucian, Carry_Leona, Carry_Karma, Carry_JarvanIV, Carry_Gwen, Galio, Swain, Lux",3.62,23.1%,76.9%
+919,16,"Swain, Carry_Leona, Carry_Karma, Carry_Gwen, Lux, Lucian, Ahri, JarvanIV",5.56,0.0%,25.0%
+2265,5,"Carry_Leona, Carry_Karma, Swain, Garen, Gwen, Lux, Ahri, Lucian",6.80,0.0%,20.0%

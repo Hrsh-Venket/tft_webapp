@@ -1,0 +1,16 @@
+sub_cluster_id,size,top_8_units,avg_place,winrate,top4_rate
+801,6,"Naafiri, Carry_Lux, Xin_Zhao, Carry_Viego, Carry_Samira, Carry_Sett, Carry_Gwen, Carry_Yone",1.67,50.0%,100.0%
+510,65,"Carry_Samira, Carry_Sett, Carry_Braum, Carry_Gwen, Carry_Yone, Naafiri, Lux, Xin_Zhao",2.08,44.6%,93.8%
+495,60,"Carry_Xin_Zhao, Carry_Samira, Carry_Sett, Carry_Gwen, Carry_Yone, Naafiri, Lux, Viego",2.67,16.7%,93.3%
+1119,6,"Carry_Kalista, Naafiri, Lux, Xin_Zhao, Viego, Carry_Samira, Carry_Sett, Carry_Gwen",2.67,16.7%,100.0%
+464,77,"Carry_Viego, Carry_Samira, Carry_Sett, Carry_Gwen, Carry_Yone, Naafiri, Lux, Xin_Zhao",2.81,24.7%,85.7%
+1577,7,"Carry_Sett, Carry_Braum, Carry_Gwen, Carry_Yone, Lux, Xin_Zhao, Samira, Naafiri",3.00,42.9%,71.4%
+72,539,"Carry_Samira, Carry_Sett, Carry_Gwen, Carry_Yone, Xin_Zhao, Naafiri, Lux, Viego",3.39,13.5%,76.2%
+1905,5,"Lux, Carry_Xin_Zhao, Viego, Carry_Samira, Carry_Gwen, Carry_Yone, Sett, Naafiri",4.20,0.0%,60.0%
+246,12,"Naafiri, Carry_Xin_Zhao, Carry_Samira, Carry_Sett, Carry_Yone, Kalista, Lux, Viego",4.92,0.0%,50.0%
+250,33,"Xin_Zhao, Carry_Viego, Carry_Samira, Carry_Sett, Carry_Yone, Lux, Naafiri, Kalista",5.00,6.1%,27.3%
+1409,20,"Carry_Sett, Carry_Gwen, Carry_Yone, Xin_Zhao, Samira, Naafiri, Viego, Lux",5.15,0.0%,45.0%
+468,125,"Carry_Samira, Carry_Sett, Carry_Yone, Xin_Zhao, Naafiri, Viego, Lux, Kalista",5.33,4.0%,28.8%
+658,37,"Carry_Samira, Carry_Gwen, Carry_Yone, Sett, Xin_Zhao, Naafiri, Lux, Viego",5.51,5.4%,29.7%
+1004,5,"Carry_Xin_Zhao, Carry_Samira, Sett, Carry_Yone, Naafiri, Viego, Yasuo, Kalista",6.80,0.0%,20.0%
+438,10,"Carry_Samira, Carry_Yone, Xin_Zhao, Kalista, Lux, Viego, Sett, Naafiri",7.20,0.0%,10.0%

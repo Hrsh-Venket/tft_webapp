@@ -1,0 +1,22 @@
+sub_cluster_id,size,top_8_units,avg_place,winrate,top4_rate
+2049,12,"Carry_g3star_Sivir, Carry_g3star_Malphite, Carry_g3star_Shen, Carry_s3star_Janna, Carry_s3star_Ziggs, Carry_Twisted_Fate, Ryze, JarvanIV",1.58,41.7%,100.0%
+127,48,"g3star_Sivir, Carry_g3star_Malphite, Carry_g3star_Shen, Janna, Carry_g3star_Ziggs, Carry_JarvanIV, Carry_Twisted_Fate, Ryze",1.94,50.0%,95.8%
+1100,7,"g3star_Sivir, Carry_g3star_Malphite, Carry_g3star_Shen, Carry_g3star_Janna, Carry_g3star_Ziggs, Ryze, JarvanIV, Carry_Twisted_Fate",2.00,42.9%,100.0%
+263,31,"Carry_g3star_Sivir, Carry_g3star_Malphite, Carry_g3star_Shen, Carry_g3star_Ziggs, Carry_Braum, Janna, Ryze, JarvanIV",2.03,48.4%,96.8%
+569,14,"g3star_Sivir, Carry_g3star_Malphite, Carry_g3star_Shen, Janna, Carry_g3star_Ziggs, Carry_Ryze, JarvanIV, Carry_Twisted_Fate",2.14,35.7%,92.9%
+38,186,"g3star_Sivir, Carry_g3star_Malphite, Carry_g3star_Shen, Carry_g3star_Ziggs, Carry_Twisted_Fate, Janna, JarvanIV, Ryze",2.88,31.2%,81.7%
+1254,10,"Carry_g3star_Sivir, Carry_g3star_Malphite, Carry_g3star_Shen, Carry_Janna, Carry_g3star_Ziggs, Carry_JarvanIV, Carry_Twisted_Fate, Ryze",3.30,30.0%,70.0%
+1021,16,"Carry_g3star_Sivir, Carry_g3star_Malphite, Carry_g3star_Shen, Carry_s3star_Janna, Carry_g3star_Ziggs, Carry_JarvanIV, Ryze, Twisted_Fate",3.31,18.8%,81.2%
+903,5,"g3star_Sivir, Carry_s3star_Malphite, Carry_s3star_Rakan, Carry_g3star_Shen, s3star_Janna, Carry_s3star_Ziggs, K'Sante, JarvanIV",3.40,40.0%,60.0%
+1246,6,"Carry_g3star_Sivir, Carry_g3star_Malphite, Carry_g3star_Shen, Carry_s3star_Janna, Carry_s3star_Ziggs, Carry_Ryze, JarvanIV, Braum",3.50,33.3%,66.7%
+33,52,"Carry_g3star_Sivir, Carry_g3star_Malphite, Carry_g3star_Shen, Carry_s3star_Janna, Carry_s3star_Ziggs, JarvanIV, Ryze, Twisted_Fate",3.75,19.2%,63.5%
+2200,6,"g3star_Sivir, Carry_s3star_Malphite, Carry_g3star_Shen, Carry_s3star_Ziggs, Carry_Braum, Janna, Twisted_Fate, JarvanIV",4.17,0.0%,50.0%
+2294,6,"g3star_Sivir, Carry_g3star_Malphite, Carry_g3star_Shen, Carry_s3star_Janna, Carry_s3star_Ziggs, Carry_JarvanIV, Ryze, Swain",4.17,0.0%,50.0%
+1025,24,"g3star_Sivir, Carry_s3star_Malphite, Carry_s3star_Shen, Carry_s3star_Janna, Carry_g3star_Ziggs, Ryze, JarvanIV, Twisted_Fate",4.79,0.0%,45.8%
+902,5,"s3star_Malphite, Carry_g3star_Shen, Carry_s3star_Janna, Carry_s3star_Ziggs, JarvanIV, g3star_Sivir, Ryze, g3star_Swain",5.60,0.0%,40.0%
+139,121,"Carry_g3star_Malphite, Carry_s3star_Shen, Carry_s3star_Ziggs, g3star_Sivir, Janna, JarvanIV, Ryze, Twisted_Fate",5.76,5.0%,24.0%
+625,18,"g3star_Sivir, Carry_s3star_Malphite, s3star_Shen, Carry_s3star_Janna, Carry_s3star_Ziggs, Ryze, JarvanIV, Twisted_Fate",5.83,0.0%,27.8%
+1909,6,"Carry_s3star_Malphite, Carry_g3star_Shen, Carry_s3star_Janna, g3star_Sivir, Ziggs, JarvanIV, Twisted_Fate, Kennen",5.83,16.7%,16.7%
+579,115,"Carry_s3star_Malphite, Carry_Ziggs, s3star_Sivir, s3star_Shen, Janna, JarvanIV, Ryze, Twisted_Fate",7.12,0.9%,3.5%
+474,17,"g3star_Sivir, s3star_Malphite, Carry_s3star_Shen, Carry_Ziggs, Janna, JarvanIV, Ryze, Twisted_Fate",7.29,0.0%,0.0%
+1245,8,"Carry_s3star_Malphite, Carry_Shen, s3star_Sivir, Janna, Ziggs, Leona, s3star_Xin_Zhao, Garen",7.50,0.0%,0.0%

@@ -1,0 +1,4 @@
+sub_cluster_id,size,top_8_units,avg_place,winrate,top4_rate
+340,16,"Carry_Ashe, Carry_Sett, Carry_Gwen, Carry_Lee_Sin, Udyr, Vi, Naafiri, Dr._Mundo",3.88,25.0%,62.5%
+649,20,"Carry_Ashe, Carry_Sett, Carry_Gwen, Udyr, Vi, Lee_Sin, Naafiri, Dr._Mundo",6.65,0.0%,5.0%
+1865,6,"Vi, Carry_Ashe, Carry_Gwen, Syndra, Janna, Swain, Dr._Mundo, Udyr",8.00,0.0%,0.0%

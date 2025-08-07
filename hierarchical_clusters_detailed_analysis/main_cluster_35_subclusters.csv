@@ -1,0 +1,15 @@
+sub_cluster_id,size,top_8_units,avg_place,winrate,top4_rate
+1769,11,"Lucian, Lux, Carry_Karma, Carry_JarvanIV, Carry_Braum, Carry_Gwen, Carry_Ekko, Galio",1.55,54.5%,100.0%
+1192,28,"Lucian, Carry_Ahri, Carry_Swain, Ryze, Carry_Karma, Carry_JarvanIV, Carry_Braum, Carry_Gwen",1.71,50.0%,100.0%
+896,51,"Lucian, Carry_Swain, Carry_Ryze, Carry_Karma, Carry_JarvanIV, Carry_Braum, Carry_Gwen, Galio",1.73,47.1%,98.0%
+742,142,"Lucian, Carry_Swain, Carry_Karma, Carry_JarvanIV, Carry_Braum, Carry_Gwen, Galio, Lux",1.92,50.0%,94.4%
+1727,20,"Lucian, Lux, Carry_Ahri, Carry_Swain, Carry_Ryze, Carry_Karma, Carry_JarvanIV, Carry_Braum",1.95,40.0%,100.0%
+167,297,"Carry_Karma, Carry_JarvanIV, Carry_Braum, Carry_Gwen, Galio, Swain, Lucian, Lux",2.21,41.1%,91.6%
+1045,10,"Lucian, Carry_Swain, Carry_Ryze, Carry_Karma, JarvanIV, Carry_Braum, Carry_Gwen, Galio",2.60,30.0%,80.0%
+2228,5,"Lucian, Lux, Carry_Ahri, Swain, Ryze, Carry_Karma, JarvanIV, Carry_Braum",2.60,40.0%,80.0%
+2204,7,"Lucian, Carry_Swain, Carry_Karma, Carry_JarvanIV, Carry_Braum, Galio, Gwen, Lux",2.71,14.3%,85.7%
+993,47,"Lux, Carry_Swain, Carry_Karma, Carry_Braum, Carry_Gwen, Lucian, Galio, JarvanIV",2.94,29.8%,78.7%
+122,37,"Carry_Karma, Carry_Braum, Carry_Gwen, Lucian, JarvanIV, Galio, Swain, Lux",4.32,10.8%,54.0%
+2085,23,"Carry_Karma, Carry_JarvanIV, Carry_Braum, Galio, Lucian, Lux, Swain, Ryze",4.57,17.4%,47.8%
+2257,6,"Carry_Swain, Carry_Karma, JarvanIV, Carry_Braum, Lucian, Lux, Galio, Ahri",6.00,0.0%,33.3%
+282,6,"Carry_Karma, Carry_Braum, Lucian, Swain, JarvanIV, Galio, Kennen, Gwen",6.17,0.0%,33.3%

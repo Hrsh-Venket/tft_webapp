@@ -1,0 +1,12 @@
+sub_cluster_id,size,top_8_units,avg_place,winrate,top4_rate
+799,13,"Xin_Zhao, Karma, Carry_JarvanIV, Carry_Volibear, Carry_Braum, Carry_Gwen, Carry_Yone, Carry_Zyra",1.54,69.2%,100.0%
+1177,5,"Shen, Yasuo, Carry_Samira, Carry_Volibear, Carry_Braum, Carry_Yone, Carry_Twisted_Fate, Dr._Mundo",1.60,60.0%,100.0%
+1292,9,"Ryze, Karma, Carry_JarvanIV, Carry_Volibear, Carry_Braum, Carry_Gwen, Carry_Yone, Galio",2.33,44.4%,88.9%
+1221,7,"Carry_Yasuo, Carry_Volibear, Carry_Braum, Carry_Yone, Dr._Mundo, Shen, Samira, Xayah",2.43,28.6%,85.7%
+1673,10,"Carry_s3star_Yasuo, Carry_Samira, Carry_Volibear, Carry_Yone, Shen, Xayah, Dr._Mundo, Braum",2.90,10.0%,80.0%
+875,53,"Carry_Samira, Carry_Sett, Carry_Volibear, Carry_Yone, Shen, Dr._Mundo, Yasuo, Braum",4.45,3.8%,52.8%
+1558,12,"Dr._Mundo, Carry_Volibear, Carry_Braum, Carry_Yone, Yasuo, Samira, Shen, Gnar",4.67,8.3%,41.7%
+1940,6,"Xayah, Carry_Dr._Mundo, Shen, Yasuo, Carry_Samira, Carry_Volibear, Carry_Yone, Gnar",4.67,0.0%,50.0%
+568,54,"Carry_Samira, Carry_Volibear, Carry_Yone, Yasuo, Shen, Xayah, Braum, Dr._Mundo",5.22,1.9%,29.6%
+966,11,"Carry_Dr._Mundo, Carry_Volibear, Carry_Yone, Gnar, Yasuo, Samira, Shen, Sett",6.45,0.0%,18.2%
+1417,18,"Carry_Volibear, Carry_Yone, Yasuo, Samira, Shen, Dr._Mundo, Sett, Braum",6.83,0.0%,5.6%

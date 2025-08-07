@@ -1,0 +1,13 @@
+sub_cluster_id,size,top_8_units,avg_place,winrate,top4_rate
+1784,5,"Rell, Carry_s3star_Xin_Zhao, Carry_g3star_Shen, Carry_Leona, Carry_Samira, Xayah, Swain, Garen",2.80,20.0%,80.0%
+1531,10,"Carry_g3star_Xayah, Carry_s3star_Xin_Zhao, Carry_s3star_Shen, Carry_Samira, Rell, Leona, Yasuo, Volibear",4.00,10.0%,60.0%
+705,17,"Rell, Carry_g3star_Xayah, Carry_s3star_Xin_Zhao, Carry_s3star_Shen, Carry_Leona, Swain, Garen, Yasuo",4.29,5.9%,64.7%
+2066,5,"Rell, Carry_s3star_Xayah, Carry_s3star_Xin_Zhao, Carry_s3star_Shen, Carry_Swain, Carry_Leona, Garen, Volibear",4.40,0.0%,40.0%
+833,9,"Rell, Carry_s3star_Xin_Zhao, Carry_s3star_Shen, Carry_Swain, Carry_Leona, Garen, Xayah, Yasuo",4.67,0.0%,44.4%
+1969,6,"Xin_Zhao, Carry_s3star_Shen, Carry_Swain, Carry_Leona, Garen, Rell, Xayah, Yasuo",4.83,0.0%,50.0%
+1972,12,"Rell, Carry_s3star_Xin_Zhao, Carry_s3star_Shen, Carry_Leona, Swain, Xayah, Garen, Braum",4.92,0.0%,50.0%
+2234,5,"Carry_s3star_Shen, Carry_Swain, Carry_Yasuo, Carry_Leona, Xin_Zhao, Garen, Rell, Samira",5.60,0.0%,20.0%
+1290,14,"Carry_s3star_Xin_Zhao, Carry_s3star_Shen, Carry_Swain, Rell, Garen, Xayah, Leona, Yasuo",6.43,0.0%,7.1%
+971,20,"Carry_Xin_Zhao, Carry_s3star_Shen, Swain, Rell, Xayah, Garen, Leona, Yasuo",6.60,0.0%,10.0%
+1104,8,"Carry_s3star_Xin_Zhao, Carry_s3star_Shen, Carry_Samira, Rell, Swain, Leona, Xayah, Volibear",6.75,0.0%,0.0%
+1470,9,"Carry_s3star_Shen, Carry_Swain, Xin_Zhao, Garen, Rell, Yasuo, Xayah, Malphite",7.22,0.0%,0.0%

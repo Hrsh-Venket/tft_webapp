@@ -15,6 +15,8 @@ from typing import Optional, List, Dict, Any, Callable, Union
 from contextlib import contextmanager
 import uuid
 
+logger = logging.getLogger(__name__)
+
 # Database imports
 try:
     from database.connection import get_db_session, execute_query, DatabaseError
@@ -30,9 +32,24 @@ try:
     from clustering import query_jsonl
     HAS_FILE_SUPPORT = True
 except ImportError:
-    HAS_FILE_SUPPORT = False
-
-logger = logging.getLogger(__name__)
+    # Create a minimal query_jsonl function if clustering module is not available
+    def query_jsonl(filename, filter_func=None):
+        """Minimal JSONL query function for when clustering module is unavailable."""
+        import json
+        try:
+            with open(filename, 'r', encoding='utf-8') as f:
+                for line in f:
+                    if line.strip():
+                        match = json.loads(line.strip())
+                        if filter_func is None or filter_func(match):
+                            yield match
+        except FileNotFoundError:
+            # Return empty generator if file not found
+            return
+            yield  # Make this a generator function
+    
+    HAS_FILE_SUPPORT = True  # We now have basic file support
+    logger.info("Using minimal JSONL query functionality (clustering module unavailable)")
 
 
 def load_clusters(csv_filename='hierarchical_clusters.csv'):
@@ -1246,8 +1263,75 @@ def print_cluster_compositions_db(cluster_id: int, cluster_type: str = 'sub', ma
         print(f"    Other units: {', '.join(other_units[:8])}{'...' if len(other_units) > 8 else ''}")
 
 
-# For backward compatibility, create an alias
-TFTQuery = TFTQueryDB
+# For backward compatibility, create an alias that automatically selects the best available implementation
+if HAS_DATABASE:
+    TFTQuery = TFTQueryDB
+    logger.info("Using database-backed TFT querying")
+elif HAS_FILE_SUPPORT:
+    TFTQuery = TFTQueryLegacy
+    logger.info("Using legacy file-based TFT querying")
+else:
+    # Create a minimal fallback class for when neither database nor file support is available
+    class TFTQueryFallback:
+        def __init__(self, *args, **kwargs):
+            logger.warning("Neither database nor file support available - using fallback mode")
+        
+        def add_unit(self, *args, **kwargs):
+            return self
+        
+        def add_trait(self, *args, **kwargs):
+            return self
+            
+        def add_player_level(self, *args, **kwargs):
+            return self
+            
+        def set_sub_cluster(self, *args, **kwargs):
+            return self
+            
+        def set_main_cluster(self, *args, **kwargs):
+            return self
+            
+        def set_cluster(self, *args, **kwargs):
+            return self
+            
+        def add_unit_count(self, *args, **kwargs):
+            return self
+            
+        def add_item_on_unit(self, *args, **kwargs):
+            return self
+            
+        def add_last_round(self, *args, **kwargs):
+            return self
+            
+        def add_unit_star_level(self, *args, **kwargs):
+            return self
+            
+        def add_unit_item_count(self, *args, **kwargs):
+            return self
+            
+        def add_augment(self, *args, **kwargs):
+            return self
+            
+        def set_patch(self, *args, **kwargs):
+            return self
+            
+        def add_custom_filter(self, *args, **kwargs):
+            return self
+            
+        def get_stats(self):
+            return {
+                "error": "Neither database nor file support available",
+                "play_count": 0,
+                "avg_placement": 0,
+                "winrate": 0,
+                "top4_rate": 0
+            }
+        
+        def execute(self):
+            return []
+    
+    TFTQuery = TFTQueryFallback
+    logger.warning("Using fallback TFT querying - limited functionality available")
 
 
 if __name__ == "__main__":

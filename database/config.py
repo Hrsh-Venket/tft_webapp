@@ -220,11 +220,12 @@ def get_database_config(env_file: str = ".env") -> DatabaseConfig:
     Load database configuration from environment variables.
     
     Environment variables (in order of precedence):
-    1. DATABASE_URL (full connection string)
-    2. Individual components:
+    1. Streamlit Cloud secrets (if available)
+    2. DATABASE_URL (full connection string)
+    3. Individual components:
        - DB_HOST, DB_PORT, DB_NAME, DB_USER, DB_PASSWORD
        - SUPABASE_DB_HOST, SUPABASE_DB_PASSWORD (for Supabase)
-    3. Default values for development
+    4. Default values for development
     
     Args:
         env_file: Path to .env file
@@ -233,6 +234,15 @@ def get_database_config(env_file: str = ".env") -> DatabaseConfig:
         DatabaseConfig: Configured database settings
     """
     env_vars = load_env_file(env_file)
+    
+    # Try to get database URL from Streamlit secrets first
+    if STREAMLIT_AVAILABLE:
+        try:
+            database_url = st.secrets.get("database", {}).get("DATABASE_URL")
+            if database_url:
+                env_vars["DATABASE_URL"] = database_url
+        except Exception:
+            pass
     
     # Check if we're in production (Heroku sets this)
     is_prod = env_vars.get("ENVIRONMENT", "").lower() == "production" or \

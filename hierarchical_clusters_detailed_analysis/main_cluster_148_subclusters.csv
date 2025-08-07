@@ -1,0 +1,14 @@
+sub_cluster_id,size,top_8_units,avg_place,winrate,top4_rate
+463,100,"Carry_Akali, Carry_K'Sante, Carry_JarvanIV, Carry_Varus, Carry_Zyra, Janna, Ryze, Kennen",2.16,31.0%,95.0%
+1809,5,"Carry_Kennen, Janna, Neeko, Carry_Akali, Carry_K'Sante, Carry_Zyra, Malphite, Rakan",2.20,0.0%,100.0%
+186,23,"Kennen, Carry_Akali, Carry_K'Sante, Carry_Ryze, Carry_JarvanIV, Carry_Varus, Carry_Zyra, Janna",2.26,30.4%,100.0%
+1166,32,"Janna, Carry_K'Sante, Carry_JarvanIV, Carry_Varus, Carry_Zyra, Kennen, Neeko, Ryze",2.69,28.1%,81.2%
+2025,29,"Janna, Carry_Akali, Carry_K'Sante, Carry_Ryze, Carry_JarvanIV, Carry_Zyra, Kennen, Neeko",2.90,24.1%,86.2%
+914,18,"Carry_Akali, Carry_K'Sante, Ryze, Carry_Varus, Carry_Zyra, JarvanIV, Janna, Kennen",3.00,27.8%,72.2%
+643,149,"Carry_Akali, Carry_K'Sante, Carry_JarvanIV, Carry_Zyra, Kennen, Ryze, Janna, Neeko",3.48,18.1%,69.8%
+1623,8,"Carry_K'Sante, Carry_Varus, Carry_Zyra, Janna, Neeko, Ryze, JarvanIV, Akali",4.38,12.5%,37.5%
+674,26,"Carry_Akali, Carry_K'Sante, Carry_Zyra, Kennen, Janna, JarvanIV, Neeko, Ryze",4.58,11.5%,50.0%
+1427,6,"Carry_K'Sante, Carry_Varus, Carry_Twisted_Fate, Carry_Zyra, JarvanIV, Braum, Gnar, Janna",4.83,0.0%,33.3%
+1408,5,"Janna, Carry_Neeko, Carry_K'Sante, Carry_JarvanIV, Carry_Zyra, Kennen, Rakan, Ryze",5.40,0.0%,20.0%
+1677,20,"Carry_K'Sante, Carry_JarvanIV, Carry_Zyra, Janna, Kennen, Neeko, Ryze, Akali",5.65,10.0%,20.0%
+300,9,"Janna, Carry_K'Sante, Carry_Zyra, Kennen, Neeko, Ryze, Akali, JarvanIV",7.00,0.0%,0.0%

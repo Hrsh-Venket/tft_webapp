@@ -1,0 +1,15 @@
+sub_cluster_id,size,top_8_units,avg_place,winrate,top4_rate
+1868,5,"Carry_g3star_Jhin, Carry_g3star_Dr._Mundo, Carry_g3star_Vi, Udyr, Carry_Varus, s3star_Gnar, Aatrox, Jinx",3.60,0.0%,60.0%
+1319,10,"Gnar, Carry_g3star_Jhin, Carry_s3star_Dr._Mundo, Carry_Sett, Carry_Varus, Udyr, Vi, Jinx",3.70,10.0%,70.0%
+2278,5,"Gnar, Carry_g3star_Jhin, Carry_s3star_Dr._Mundo, Carry_g3star_Vi, Udyr, Carry_Jinx, Sett, Varus",4.00,0.0%,60.0%
+2293,8,"Gnar, Carry_g3star_Jhin, Carry_s3star_Kobuko, Carry_s3star_Dr._Mundo, Aatrox, Zac, Poppy, Varus",4.25,0.0%,62.5%
+2213,7,"Carry_Gnar, Carry_s3star_Jhin, Carry_g3star_Dr._Mundo, Carry_s3star_Vi, Udyr, Naafiri, Aatrox, Sett",4.86,0.0%,42.9%
+2302,7,"Carry_Gnar, Carry_s3star_Jhin, Carry_g3star_Dr._Mundo, Udyr, Carry_Sett, Vi, Jinx, Caitlyn",4.86,14.3%,42.9%
+2147,8,"Carry_Gnar, Carry_s3star_Jhin, Carry_g3star_Dr._Mundo, Vi, Carry_Udyr, Jinx, Aatrox, Caitlyn",5.00,0.0%,37.5%
+2287,5,"Zac, Carry_Gnar, Aatrox, Carry_g3star_Jhin, Carry_g3star_Kobuko, Carry_g3star_Dr._Mundo, Poppy, Jinx",5.00,0.0%,40.0%
+1847,7,"Gnar, Carry_g3star_Jhin, Carry_s3star_Dr._Mundo, Carry_g3star_Vi, Udyr, Sett, Jinx, Naafiri",5.14,0.0%,28.6%
+329,19,"Carry_Gnar, Carry_s3star_Jhin, Carry_s3star_Dr._Mundo, Udyr, Vi, Aatrox, Sett, Jinx",5.84,0.0%,10.5%
+2303,8,"Carry_s3star_Jhin, Carry_s3star_Dr._Mundo, Carry_Udyr, Gnar, Vi, Sett, Jinx, Caitlyn",6.00,0.0%,25.0%
+2297,7,"Carry_g3star_Jhin, Carry_s3star_Dr._Mundo, Vi, Carry_Jinx, Gnar, Udyr, Sett, Aatrox",6.43,0.0%,14.3%
+2273,6,"Gnar, Carry_g3star_Jhin, Carry_s3star_Dr._Mundo, Carry_Varus, Sett, Kobuko, Vi, Udyr",7.00,0.0%,0.0%
+2292,10,"Gnar, Carry_s3star_Jhin, Carry_s3star_Dr._Mundo, Vi, Udyr, Kobuko, Sett, Naafiri",7.20,0.0%,10.0%

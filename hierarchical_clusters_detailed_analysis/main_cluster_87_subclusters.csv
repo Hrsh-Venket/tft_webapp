@@ -1,0 +1,20 @@
+sub_cluster_id,size,top_8_units,avg_place,winrate,top4_rate
+1655,6,"Carry_g3star_Kayle, Naafiri, Zac, Carry_s3star_Aatrox, Udyr, Sett, Carry_Lee_Sin, Carry_Zyra",1.17,83.3%,100.0%
+2073,6,"Carry_s3star_Kayle, Naafiri, Carry_g3star_Zac, Carry_g3star_Aatrox, Udyr, Sett, Carry_Lee_Sin, Carry_Zyra",2.00,66.7%,83.3%
+1562,8,"Carry_g3star_Kayle, Naafiri, Zac, Carry_s3star_Aatrox, Dr._Mundo, Udyr, Carry_Braum, Carry_Lee_Sin",2.38,25.0%,100.0%
+2227,5,"Carry_s3star_Kayle, Carry_g3star_Zac, Carry_s3star_Aatrox, Carry_Malzahar, Carry_K'Sante, Udyr, Jhin, Varus",2.60,20.0%,100.0%
+593,22,"Carry_g3star_Kayle, Carry_s3star_Zac, Carry_s3star_Aatrox, Udyr, Carry_Sett, Carry_Lee_Sin, Naafiri, Dr._Mundo",2.64,31.8%,81.8%
+4,13,"Carry_g3star_Kayle, Naafiri, Carry_g3star_Zac, Carry_g3star_Aatrox, Dr._Mundo, Udyr, Carry_Braum, Sett",3.08,23.1%,76.9%
+493,51,"Carry_g3star_Kayle, Carry_g3star_Zac, Carry_s3star_Aatrox, Carry_Lee_Sin, Udyr, Naafiri, Dr._Mundo, Sett",3.57,27.4%,70.6%
+1144,13,"Carry_g3star_Kayle, Carry_s3star_Aatrox, Udyr, Carry_Lee_Sin, Zac, Dr._Mundo, Naafiri, Sett",3.69,30.8%,61.5%
+1958,6,"Carry_s3star_Kayle, Zac, Carry_s3star_Aatrox, Carry_Udyr, Carry_Lee_Sin, Naafiri, Dr._Mundo, Sett",4.50,16.7%,50.0%
+581,14,"Carry_g3star_Kayle, Carry_s3star_Naafiri, Carry_g3star_Zac, Carry_s3star_Aatrox, Carry_Udyr, Dr._Mundo, Sett, Vi",4.57,7.1%,42.9%
+514,44,"Carry_g3star_Kayle, Carry_g3star_Naafiri, Carry_g3star_Zac, Carry_g3star_Aatrox, Udyr, Dr._Mundo, Sett, Vi",4.80,13.6%,36.4%
+2131,5,"Carry_g3star_Kayle, Carry_Naafiri, Carry_g3star_Aatrox, Dr._Mundo, Carry_Udyr, Carry_Lee_Sin, Zac, Vi",4.80,20.0%,40.0%
+1329,5,"Carry_g3star_Kayle, Carry_g3star_Zac, Carry_s3star_Aatrox, Carry_Jhin, Carry_Udyr, Dr._Mundo, Naafiri, Vi",5.00,0.0%,20.0%
+829,61,"Carry_g3star_Kayle, Carry_g3star_Zac, Carry_s3star_Aatrox, Carry_Udyr, Dr._Mundo, Naafiri, Vi, Sett",5.67,0.0%,18.0%
+2138,10,"Carry_g3star_Kayle, Carry_s3star_Zac, Carry_s3star_Aatrox, Carry_Dr._Mundo, Carry_Udyr, Naafiri, Vi, Sett",6.10,0.0%,10.0%
+260,143,"Carry_g3star_Kayle, Carry_g3star_Zac, Carry_g3star_Aatrox, Udyr, Naafiri, Dr._Mundo, Sett, Vi",6.26,2.1%,11.9%
+137,5,"Carry_s3star_Kayle, s3star_Zac, Carry_g3star_Aatrox, Carry_g3star_Dr._Mundo, Udyr, s3star_Naafiri, s3star_Vi, Gwen",6.40,0.0%,0.0%
+628,28,"Carry_g3star_Kayle, Carry_s3star_Aatrox, Carry_Udyr, Zac, Naafiri, Dr._Mundo, Sett, Vi",6.79,0.0%,0.0%
+283,18,"Carry_g3star_Kayle, s3star_Zac, Carry_s3star_Aatrox, Naafiri, Udyr, Dr._Mundo, Vi, Sett",6.89,5.6%,5.6%

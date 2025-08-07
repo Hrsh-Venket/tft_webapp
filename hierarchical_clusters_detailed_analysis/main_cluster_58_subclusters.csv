@@ -1,0 +1,6 @@
+sub_cluster_id,size,top_8_units,avg_place,winrate,top4_rate
+1607,6,"Ezreal, Carry_g3star_Rell, Carry_g3star_Syndra, Malzahar, Leona, Carry_Yuumi, s3star_Garen, Swain",5.17,0.0%,33.3%
+1922,9,"Carry_g3star_Ezreal, Carry_s3star_Garen, Carry_g3star_Rell, Carry_g3star_Syndra, Yuumi, Malzahar, Swain, Seraphine",5.33,0.0%,33.3%
+2261,6,"Carry_s3star_Ezreal, Carry_g3star_Garen, Carry_s3star_Syndra, s3star_Rell, Leona, Malzahar, Yuumi, Rakan",5.67,0.0%,33.3%
+1438,13,"Carry_s3star_Ezreal, Carry_g3star_Rell, Carry_g3star_Syndra, s3star_Garen, Swain, Yuumi, Malzahar, Leona",6.62,0.0%,7.7%
+1080,9,"Carry_s3star_Rell, Carry_s3star_Syndra, Ahri, Neeko, Swain, Poppy, s3star_Garen, Xayah",6.78,11.1%,11.1%

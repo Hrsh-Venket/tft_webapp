@@ -1,0 +1,18 @@
+sub_cluster_id,size,top_8_units,avg_place,winrate,top4_rate
+2023,5,"Ezreal, Carry_g3star_Katarina, Carry_Jayce, Carry_Leona, Carry_Ryze, Carry_Yuumi, Carry_Lee_Sin, Rakan",1.00,100.0%,100.0%
+2048,10,"Ezreal, Garen, Carry_g3star_Katarina, Carry_Jayce, Carry_Leona, Carry_Yuumi, Carry_Lee_Sin, Rakan",2.40,10.0%,90.0%
+1077,13,"Ezreal, Carry_Garen, Carry_Jayce, Carry_Leona, Carry_Yuumi, Carry_Seraphine, Syndra, Rakan",2.69,30.8%,92.3%
+885,20,"Ezreal, Rakan, Carry_Malzahar, Carry_Jayce, Carry_Leona, Carry_Yuumi, Carry_Seraphine, Garen",3.15,15.0%,90.0%
+1078,12,"Ezreal, Carry_Garen, Carry_Jayce, Carry_Leona, Carry_Yuumi, Katarina, Rakan, Malzahar",4.33,0.0%,58.3%
+1424,7,"Ezreal, Carry_Garen, Carry_Rakan, Carry_s3star_Katarina, Carry_Jayce, Carry_Yuumi, Caitlyn, Ryze",4.43,14.3%,42.9%
+645,8,"Carry_Ezreal, Garen, Rakan, Carry_Jayce, Carry_Leona, Carry_Yuumi, Syndra, Katarina",4.50,0.0%,62.5%
+1647,8,"Ezreal, Rakan, Carry_Jayce, Carry_K'Sante, Carry_Leona, Carry_Yuumi, Garen, Malzahar",4.50,0.0%,50.0%
+695,40,"Ezreal, Carry_Jayce, Carry_Leona, Carry_Yuumi, Carry_Seraphine, Garen, Rakan, Syndra",4.53,7.5%,52.5%
+756,7,"Ezreal, Garen, Carry_Rakan, Carry_Malzahar, Carry_Jayce, Carry_Leona, Carry_Yuumi, Caitlyn",4.71,14.3%,42.9%
+1178,40,"Ezreal, Garen, Carry_Malzahar, Carry_Jayce, Carry_Leona, Carry_Yuumi, Rakan, Syndra",4.92,5.0%,40.0%
+1052,8,"Carry_Garen, Carry_Malzahar, Carry_Jayce, Carry_Leona, Carry_Yuumi, Ezreal, Rakan, Syndra",5.00,12.5%,37.5%
+264,49,"Carry_Jayce, Carry_Leona, Carry_Yuumi, Ezreal, Garen, Rakan, Katarina, Seraphine",5.78,2.0%,22.4%
+1207,6,"Carry_s3star_Jayce, Carry_Yuumi, Rakan, Kobuko, Ezreal, Darius, Leona, Poppy",6.17,0.0%,0.0%
+1478,8,"Ezreal, Carry_Malzahar, Carry_Jayce, Carry_Yuumi, Seraphine, Garen, Leona, Zac",6.50,0.0%,0.0%
+2098,6,"Ezreal, Garen, Carry_Jayce, Carry_Yuumi, Carry_Seraphine, Leona, Syndra, Rakan",6.50,0.0%,16.7%
+440,7,"Ezreal, Carry_s3star_Garen, Rakan, Carry_Jayce, Carry_Yuumi, Katarina, Caitlyn, Syndra",7.00,0.0%,0.0%

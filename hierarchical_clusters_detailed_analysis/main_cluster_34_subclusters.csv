@@ -1,0 +1,22 @@
+sub_cluster_id,size,top_8_units,avg_place,winrate,top4_rate
+2109,8,"Carry_Swain, Carry_Ashe, Carry_Braum, Carry_Lee_Sin, Carry_Seraphine, Carry_Zyra, Syndra, Vi",1.25,87.5%,100.0%
+1616,6,"Syndra, Carry_Vi, Carry_Swain, Carry_Ashe, Carry_Braum, Carry_Lee_Sin, Carry_Seraphine, Carry_Zyra",1.50,66.7%,100.0%
+967,33,"Vi, Carry_Swain, Carry_Ashe, Carry_Braum, Carry_Gwen, Carry_Zyra, Janna, Syndra",2.18,54.5%,90.9%
+1883,9,"Carry_Dr._Mundo, Vi, Carry_Swain, Carry_Ashe, Carry_Braum, Carry_Zyra, Syndra, Janna",3.67,33.3%,66.7%
+1937,5,"Syndra, Carry_Swain, Carry_Ashe, Carry_Braum, Carry_Seraphine, Carry_Zyra, Janna, Vi",3.80,40.0%,60.0%
+922,5,"Carry_s3star_Vi, Carry_s3star_Swain, Udyr, Carry_Ashe, Carry_Sett, Carry_Zyra, Janna, Syndra",4.80,20.0%,60.0%
+2184,6,"Carry_Dr._Mundo, Vi, Janna, Carry_Swain, Carry_Ashe, Carry_Braum, Syndra, Zyra",5.33,0.0%,33.3%
+1172,6,"Vi, Carry_Swain, Carry_Ashe, Carry_Braum, Carry_Lee_Sin, Syndra, Janna, Dr._Mundo",6.50,0.0%,0.0%
+635,15,"Vi, Carry_Janna, Carry_Swain, Carry_Ashe, Carry_Braum, Syndra, Udyr, Dr._Mundo",6.60,0.0%,6.7%
+1194,6,"Vi, Janna, Carry_Swain, Carry_Ashe, Carry_Gwen, Carry_Lee_Sin, Dr._Mundo, Syndra",6.83,0.0%,0.0%
+1830,12,"Vi, Carry_Swain, Carry_Ashe, Carry_Sett, Syndra, Janna, Udyr, Zyra",6.92,0.0%,8.3%
+535,5,"Carry_Syndra, Vi, Carry_Swain, Carry_Ashe, Carry_Sett, Janna, Udyr, Dr._Mundo",7.00,0.0%,20.0%
+411,51,"Carry_Swain, Carry_Ashe, Carry_Braum, Vi, Janna, Syndra, Dr._Mundo, Zyra",7.22,0.0%,2.0%
+1191,29,"Carry_Swain, Carry_Ashe, Carry_Gwen, Vi, Janna, Syndra, Zyra, Dr._Mundo",7.24,0.0%,0.0%
+600,8,"Vi, Carry_Swain, Carry_Ashe, Carry_Braum, Carry_Gwen, Janna, Syndra, Dr._Mundo",7.25,0.0%,0.0%
+1363,13,"Carry_Swain, Carry_Ashe, Carry_Ryze, Janna, Vi, Syndra, JarvanIV, Udyr",7.38,0.0%,0.0%
+1291,13,"Vi, Carry_Swain, Carry_Ashe, Carry_Seraphine, Syndra, Janna, Udyr, Dr._Mundo",7.46,0.0%,0.0%
+974,10,"Carry_Swain, Carry_Ashe, Carry_Yuumi, Syndra, Vi, Janna, Udyr, Braum",7.60,0.0%,0.0%
+595,214,"Carry_Swain, Carry_Ashe, Vi, Janna, Syndra, Dr._Mundo, Braum, Udyr",7.79,0.0%,0.5%
+373,6,"Carry_Swain, Carry_Ashe, Carry_Varus, Janna, Vi, Syndra, Rell, K'Sante",7.83,0.0%,0.0%
+1122,10,"Carry_Dr._Mundo, Vi, Carry_Swain, Carry_Ashe, Janna, Syndra, Udyr, Zyra",8.00,0.0%,0.0%

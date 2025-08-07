@@ -1,0 +1,6 @@
+sub_cluster_id,size,top_8_units,avg_place,winrate,top4_rate
+893,5,"Carry_Gnar, Dr._Mundo, Yasuo, Carry_Samira, Carry_Sett, Carry_Volibear, Carry_Braum, Shen",2.80,0.0%,80.0%
+994,6,"Carry_g3star_Gnar, Carry_Volibear, Carry_Braum, Dr._Mundo, Shen, Yasuo, Sett, Jhin",4.00,33.3%,50.0%
+1891,5,"Carry_Gnar, Dr._Mundo, Shen, Yasuo, Carry_Samira, Carry_Sett, Carry_Volibear, Braum",5.00,20.0%,20.0%
+2187,5,"Carry_g3star_Gnar, Dr._Mundo, Carry_Sett, Carry_Volibear, Naafiri, Aatrox, Braum, Xin_Zhao",6.40,0.0%,0.0%
+1274,5,"Carry_s3star_Gnar, Carry_Volibear, Shen, Samira, Dr._Mundo, Caitlyn, Yasuo, Yone",7.60,0.0%,0.0%

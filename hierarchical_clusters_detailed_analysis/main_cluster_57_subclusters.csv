@@ -1,0 +1,12 @@
+sub_cluster_id,size,top_8_units,avg_place,winrate,top4_rate
+1792,5,"Carry_Sett, Carry_Braum, Carry_Gwen, Carry_Yone, Carry_Twisted_Fate, Volibear, Zyra, Vi",2.00,40.0%,100.0%
+692,8,"Carry_Braum, Carry_Gwen, Carry_Lee_Sin, Carry_Yone, Carry_Twisted_Fate, Sett, Volibear, Zyra",2.25,37.5%,87.5%
+1375,22,"Carry_Braum, Carry_Gwen, Carry_Yone, Carry_Twisted_Fate, Volibear, Zyra, Swain, Lee_Sin",4.05,27.3%,50.0%
+1125,12,"Volibear, Braum, Carry_Gwen, Carry_Yone, Carry_Twisted_Fate, Carry_Zyra, Swain, Sett",4.58,8.3%,50.0%
+864,9,"Carry_Sett, Carry_Gwen, Carry_Yone, Carry_Twisted_Fate, Zyra, Volibear, Braum, Lee_Sin",4.78,11.1%,33.3%
+269,25,"Carry_Gwen, Carry_Yone, Carry_Twisted_Fate, Braum, Volibear, Sett, Swain, Zyra",5.32,8.0%,36.0%
+701,13,"Carry_Braum, Carry_Gwen, Carry_Twisted_Fate, Volibear, Sett, Yone, Zyra, Lee_Sin",5.62,7.7%,30.8%
+672,10,"Volibear, Carry_Braum, Carry_Yone, Carry_Twisted_Fate, Galio, Karma, JarvanIV, Gwen",6.00,0.0%,10.0%
+838,13,"Carry_Sett, Carry_Yone, Carry_Twisted_Fate, Swain, Volibear, Lee_Sin, Gwen, Braum",6.23,0.0%,7.7%
+850,25,"Carry_Yone, Carry_Twisted_Fate, Volibear, Braum, Sett, Zyra, Gwen, Swain",6.36,0.0%,20.0%
+830,6,"Carry_Braum, Carry_Twisted_Fate, Sett, Yone, Swain, Gwen, Zyra, Volibear",7.33,0.0%,0.0%

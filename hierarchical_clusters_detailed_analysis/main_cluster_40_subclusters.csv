@@ -1,0 +1,19 @@
+sub_cluster_id,size,top_8_units,avg_place,winrate,top4_rate
+981,19,"Kobuko, Carry_Udyr, Carry_Yasuo, Carry_Senna, Carry_Ryze, Carry_JarvanIV, Carry_Yone, Carry_Galio",2.42,21.1%,100.0%
+2186,5,"Aatrox, Kobuko, Gangplank, Carry_Udyr, Carry_Yasuo, Carry_Senna, Carry_Ryze, Carry_JarvanIV",2.80,0.0%,100.0%
+573,49,"Carry_Udyr, Yasuo, Carry_Senna, Carry_Ryze, Carry_JarvanIV, Carry_Yone, Carry_Galio, Kobuko",2.94,16.3%,83.7%
+151,23,"Aatrox, Udyr, Carry_Yasuo, Carry_Senna, Carry_Ryze, Carry_JarvanIV, Carry_Yone, Carry_Galio",3.30,21.7%,73.9%
+1644,7,"Aatrox, Kobuko, Gangplank, Carry_Udyr, Yasuo, Carry_Senna, Carry_Ryze, Carry_JarvanIV",3.43,14.3%,71.4%
+839,14,"Kobuko, Carry_Udyr, Yasuo, Carry_Senna, Carry_Ryze, Carry_JarvanIV, Carry_Yone, Galio",3.79,14.3%,71.4%
+1780,8,"Kobuko, Udyr, Yasuo, Carry_Senna, Carry_Ryze, Carry_JarvanIV, Carry_Lee_Sin, Carry_Yone",4.62,0.0%,50.0%
+663,9,"Carry_Senna, Carry_Ryze, Carry_JarvanIV, Carry_Lee_Sin, Galio, Kobuko, Udyr, Yasuo",5.11,0.0%,55.6%
+1534,13,"Kobuko, Carry_Udyr, Carry_Yasuo, Carry_Senna, Carry_Ryze, Galio, Aatrox, JarvanIV",5.15,7.7%,38.5%
+572,11,"Aatrox, Kobuko, Gangplank, Udyr, Yasuo, Carry_Senna, Carry_Ryze, JarvanIV",5.18,0.0%,27.3%
+1289,5,"Carry_Senna, Carry_Akali, Carry_Ryze, Carry_JarvanIV, Galio, Aatrox, Kobuko, Udyr",5.20,0.0%,60.0%
+1483,11,"Kobuko, Udyr, Carry_Yasuo, Carry_Senna, Carry_Ryze, Carry_JarvanIV, Galio, Aatrox",5.64,0.0%,9.1%
+1301,14,"Aatrox, Carry_Senna, Carry_Ryze, Carry_JarvanIV, Carry_Galio, Gangplank, Yasuo, Karma",5.71,0.0%,14.3%
+594,9,"Kobuko, Udyr, Yasuo, Carry_Senna, Carry_Ryze, JarvanIV, Carry_Yone, Galio",5.78,0.0%,22.2%
+2096,6,"Kobuko, Udyr, Carry_Yasuo, Carry_Senna, Carry_Ryze, JarvanIV, Aatrox, Galio",6.00,0.0%,16.7%
+2179,6,"Kobuko, Carry_Udyr, Yasuo, Carry_Senna, Carry_Ryze, Galio, JarvanIV, Aatrox",6.00,0.0%,0.0%
+816,24,"Carry_Senna, Carry_Ryze, Carry_JarvanIV, Galio, Kobuko, Udyr, Yasuo, Aatrox",6.46,0.0%,16.7%
+1547,5,"Kobuko, Carry_Udyr, Yasuo, Carry_Senna, Carry_Ryze, Carry_Yone, Galio, JarvanIV",6.80,0.0%,0.0%

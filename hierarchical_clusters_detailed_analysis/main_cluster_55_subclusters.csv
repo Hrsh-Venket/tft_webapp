@@ -1,0 +1,11 @@
+sub_cluster_id,size,top_8_units,avg_place,winrate,top4_rate
+729,9,"Carry_g3star_Kayle, Carry_s3star_Zac, Aatrox, Carry_Udyr, Carry_Sett, Carry_Varus, Dr._Mundo, Naafiri",1.78,66.7%,100.0%
+925,21,"Carry_g3star_Kayle, Carry_Sett, Carry_Lee_Sin, Carry_Varus, Udyr, Aatrox, Naafiri, Zac",2.19,52.4%,85.7%
+1295,9,"Carry_g3star_Kayle, Carry_K'Sante, Carry_Sett, Carry_Varus, Zac, Udyr, Jhin, Lee_Sin",3.00,22.2%,88.9%
+567,6,"Jhin, Dr._Mundo, Udyr, Carry_Jinx, Carry_Sett, Carry_Lee_Sin, Carry_Varus, Gnar",3.17,16.7%,66.7%
+235,10,"Carry_s3star_Kayle, Udyr, Carry_Sett, Carry_Varus, Aatrox, Dr._Mundo, Naafiri, Lee_Sin",4.10,20.0%,60.0%
+2212,8,"Carry_s3star_Kayle, Aatrox, Carry_Udyr, Carry_Sett, Carry_Varus, Dr._Mundo, Naafiri, Zac",4.62,12.5%,37.5%
+1548,6,"Jhin, Dr._Mundo, Vi, Carry_Udyr, Carry_Jinx, Carry_Sett, Carry_Varus, Gnar",4.83,0.0%,50.0%
+697,23,"Carry_Jinx, Carry_Sett, Carry_Varus, Dr._Mundo, Udyr, Jhin, Gnar, Vi",5.70,0.0%,26.1%
+1994,6,"Carry_Sett, Carry_Lee_Sin, Carry_Varus, Zyra, Jhin, Udyr, K'Sante, Vi",6.00,0.0%,16.7%
+1884,5,"Dr._Mundo, Udyr, Carry_Sett, Carry_Varus, Jhin, Gnar, Vi, Caitlyn",6.60,0.0%,0.0%

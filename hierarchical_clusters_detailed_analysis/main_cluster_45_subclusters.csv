@@ -1,0 +1,23 @@
+sub_cluster_id,size,top_8_units,avg_place,winrate,top4_rate
+1839,5,"Kobuko, Carry_Udyr, Carry_Yasuo, Carry_Ryze, Carry_JarvanIV, Carry_Lee_Sin, Carry_Yone, Carry_Zyra",1.60,60.0%,100.0%
+1750,5,"Kobuko, Carry_Udyr, Yasuo, Carry_Ryze, Carry_JarvanIV, Carry_Lee_Sin, Carry_Yone, Carry_Twisted_Fate",1.80,40.0%,100.0%
+492,13,"Carry_Ryze, Carry_JarvanIV, Carry_Lee_Sin, Carry_Yone, Carry_Twisted_Fate, Galio, Kobuko, Udyr",1.85,46.1%,92.3%
+1206,7,"Carry_Ryze, Carry_Karma, Carry_JarvanIV, Carry_Braum, Carry_Gwen, Carry_Lee_Sin, Galio, Lucian",2.00,42.9%,85.7%
+1011,7,"Carry_Ryze, JarvanIV, Carry_Lee_Sin, Carry_Yone, Carry_Twisted_Fate, Kobuko, Udyr, Yasuo",2.14,42.9%,100.0%
+1952,11,"Carry_Ryze, Carry_Karma, Carry_JarvanIV, Carry_Gwen, Carry_Lee_Sin, Galio, Lucian, Lux",2.18,54.5%,90.9%
+1602,5,"Carry_Akali, Carry_Ryze, Carry_JarvanIV, Carry_Lee_Sin, Carry_Yone, Galio, Kobuko, Udyr",2.20,20.0%,100.0%
+1609,7,"Lucian, Lux, Carry_Swain, Carry_Ryze, Carry_Karma, Carry_JarvanIV, Carry_Gwen, Carry_Lee_Sin",2.43,14.3%,100.0%
+89,5,"Kobuko, Carry_Udyr, Carry_Yasuo, Carry_Ryze, Carry_JarvanIV, Carry_Lee_Sin, Carry_Yone, Galio",2.60,20.0%,100.0%
+1565,13,"Kobuko, Carry_Udyr, Yasuo, Carry_Ryze, Carry_JarvanIV, Carry_Lee_Sin, Carry_Yone, Carry_Zyra",2.77,15.4%,84.6%
+831,14,"Kobuko, Udyr, Carry_Yasuo, Carry_Ryze, Carry_JarvanIV, Carry_Lee_Sin, Carry_Yone, Galio",3.14,28.6%,78.6%
+904,16,"Kobuko, Udyr, Yasuo, Carry_Ryze, Carry_JarvanIV, Carry_Lee_Sin, Carry_Zyra, Galio",3.31,31.2%,62.5%
+2152,5,"Carry_Lee_Sin, Carry_Yone, Udyr, Yasuo, Senna, Galio, Zyra, Aatrox",3.60,20.0%,60.0%
+2,128,"Carry_Ryze, Carry_JarvanIV, Carry_Lee_Sin, Carry_Yone, Galio, Kobuko, Udyr, Yasuo",3.67,13.3%,69.5%
+500,13,"Kobuko, Carry_Udyr, Yasuo, Carry_Ryze, Carry_JarvanIV, Carry_Lee_Sin, Galio, Aatrox",4.15,0.0%,61.5%
+18,47,"Carry_Ryze, Carry_Lee_Sin, Carry_Yone, JarvanIV, Galio, Udyr, Yasuo, Kobuko",4.85,4.3%,40.4%
+271,42,"Carry_Ryze, Carry_JarvanIV, Carry_Lee_Sin, Galio, Kobuko, Yasuo, Udyr, Senna",5.12,0.0%,38.1%
+1218,11,"Kobuko, Carry_Udyr, Yasuo, Carry_Ryze, Carry_Lee_Sin, Galio, Aatrox, JarvanIV",5.45,0.0%,36.4%
+1586,5,"Udyr, Carry_Ryze, Carry_Sett, Carry_Lee_Sin, Kobuko, Yasuo, Naafiri, JarvanIV",5.80,0.0%,20.0%
+2031,5,"Carry_Lee_Sin, Carry_Yone, Carry_Twisted_Fate, Volibear, Braum, Sett, Swain, Zyra",5.80,0.0%,20.0%
+1384,12,"Gangplank, Senna, Carry_Ryze, Carry_JarvanIV, Carry_Lee_Sin, Carry_Galio, Aatrox, Lucian",6.25,0.0%,0.0%
+324,9,"Carry_Ryze, Carry_Lee_Sin, Kobuko, Udyr, Yasuo, JarvanIV, Galio, Senna",7.00,0.0%,11.1%

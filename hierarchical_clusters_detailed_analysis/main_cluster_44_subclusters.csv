@@ -1,0 +1,26 @@
+sub_cluster_id,size,top_8_units,avg_place,winrate,top4_rate
+1588,5,"Aatrox, Carry_Kobuko, Udyr, Yasuo, Carry_Ryze, Carry_Karma, Carry_JarvanIV, Carry_Yone",2.60,20.0%,80.0%
+1748,8,"Kobuko, Udyr, Carry_Yasuo, Senna, Carry_Ryze, Carry_Karma, Carry_JarvanIV, Carry_Yone",2.88,37.5%,87.5%
+1461,21,"Carry_Ryze, Carry_Karma, Carry_JarvanIV, Carry_Yone, Galio, Senna, Udyr, Lee_Sin",3.48,23.8%,71.4%
+1574,10,"Aatrox, Senna, Carry_Ryze, Carry_Karma, Carry_JarvanIV, Carry_Volibear, Carry_Yone, Carry_s3star_Galio",3.50,10.0%,90.0%
+1733,6,"Carry_Ryze, Carry_Karma, Carry_JarvanIV, Carry_Gwen, Carry_Yone, Galio, Xin_Zhao, Swain",3.50,16.7%,83.3%
+1590,17,"Lucian, Aatrox, Gangplank, Senna, Carry_Karma, Carry_JarvanIV, Carry_Volibear, Carry_Yone",4.53,5.9%,47.1%
+1008,9,"Lucian, Aatrox, Gangplank, Carry_Senna, Carry_Karma, JarvanIV, Carry_Yone, Carry_g3star_Galio",4.56,0.0%,55.6%
+958,12,"Carry_Aatrox, Gangplank, Carry_Karma, Carry_JarvanIV, Carry_Yone, Carry_g3star_Galio, Lucian, Senna",4.83,0.0%,41.7%
+618,161,"Carry_Karma, Carry_JarvanIV, Carry_Yone, Carry_s3star_Galio, Lucian, Aatrox, Senna, Gangplank",5.14,6.2%,36.0%
+2177,7,"Carry_Udyr, Carry_Karma, Carry_JarvanIV, Carry_Yone, Carry_s3star_Galio, Aatrox, Gangplank, Senna",5.14,0.0%,14.3%
+2139,5,"Lucian, Carry_Aatrox, Gangplank, Carry_Senna, Carry_Karma, JarvanIV, Carry_Yone, Carry_g3star_Galio",5.20,0.0%,20.0%
+867,5,"Lucian, Senna, Carry_Ryze, Carry_Karma, Carry_JarvanIV, Carry_Volibear, Carry_Galio, Aatrox",5.40,0.0%,40.0%
+561,6,"Gangplank, Senna, Carry_Karma, JarvanIV, Carry_Lee_Sin, Carry_Yone, Carry_s3star_Galio, Lucian",5.50,0.0%,50.0%
+251,61,"Carry_Ryze, Carry_Karma, Carry_JarvanIV, Carry_Galio, Senna, Aatrox, Lucian, Gangplank",5.61,1.6%,18.0%
+527,5,"Carry_Aatrox, Carry_Ryze, Carry_Karma, JarvanIV, Carry_Galio, Lucian, Gangplank, Senna",5.80,0.0%,20.0%
+201,23,"Carry_Karma, Carry_JarvanIV, Carry_Yone, Galio, Ryze, Braum, Lee_Sin, Volibear",5.91,4.3%,13.0%
+244,153,"Carry_Ryze, Carry_Karma, Carry_JarvanIV, Galio, Swain, Lucian, Lux, Ahri",5.99,2.6%,18.3%
+362,18,"Carry_Ryze, Carry_Karma, Carry_Yone, Carry_s3star_Galio, JarvanIV, Aatrox, Senna, Gangplank",6.00,0.0%,16.7%
+1851,7,"Aatrox, Gangplank, Senna, Carry_Karma, Carry_Volibear, Carry_Yone, Carry_s3star_Galio, JarvanIV",6.00,0.0%,28.6%
+1523,5,"Ryze, Carry_Karma, JarvanIV, Carry_Volibear, Braum, Carry_Yone, Galio, Gwen",6.20,0.0%,20.0%
+1348,7,"Carry_Ryze, Carry_Karma, JarvanIV, Carry_Yone, Galio, Xin_Zhao, Volibear, Zyra",6.43,0.0%,14.3%
+1327,10,"Lucian, Carry_Aatrox, Gangplank, Carry_Karma, Carry_Yone, Carry_s3star_Galio, Senna, JarvanIV",6.80,0.0%,10.0%
+858,16,"Senna, Carry_Karma, JarvanIV, Carry_Yone, Carry_s3star_Galio, Gangplank, Lucian, Aatrox",7.19,0.0%,0.0%
+1365,10,"Carry_Karma, Carry_Yone, Galio, JarvanIV, Volibear, Ryze, Xin_Zhao, Braum",7.20,0.0%,0.0%
+2189,8,"Carry_Ryze, Carry_Karma, Galio, JarvanIV, Lucian, Ahri, Lux, Swain",7.38,0.0%,0.0%
