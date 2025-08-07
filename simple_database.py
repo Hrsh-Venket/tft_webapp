@@ -85,8 +85,7 @@ def test_connection() -> bool:
             try:
                 conn = psycopg2.connect(
                     url, 
-                    connect_timeout=10,
-                    options='-c default_transaction_isolation=read_committed'
+                    connect_timeout=10
                 )
                 cursor = conn.cursor()
                 cursor.execute("SELECT 1")
@@ -123,8 +122,7 @@ def execute_query(query: str, params: tuple = None) -> List[Dict[str, Any]]:
         try:
             conn = psycopg2.connect(
                 url, 
-                connect_timeout=15,
-                options='-c default_transaction_isolation=read_committed'
+                connect_timeout=15
             )
             cursor = conn.cursor()
             
@@ -207,15 +205,13 @@ class SimpleTFTQuery:
             # Build WHERE clause
             where_conditions = []
             params = []
-            param_counter = 1
             
             # Unit filters
             if self.unit_filters:
                 unit_conditions = []
                 for unit in self.unit_filters:
-                    unit_conditions.append(f"units::text LIKE ${param_counter}")
+                    unit_conditions.append("units::text LIKE %s")
                     params.append(f'%{unit}%')
-                    param_counter += 1
                 
                 if unit_conditions:
                     where_conditions.append(f"({' OR '.join(unit_conditions)})")
@@ -223,17 +219,15 @@ class SimpleTFTQuery:
             # Level filters
             if self.level_filters:
                 for level_filter in self.level_filters:
-                    where_conditions.append(f"level >= ${param_counter} AND level <= ${param_counter + 1}")
+                    where_conditions.append("level >= %s AND level <= %s")
                     params.extend([level_filter['min'], level_filter['max']])
-                    param_counter += 2
             
             # Trait filters
             if self.trait_filters:
                 trait_conditions = []
                 for trait in self.trait_filters:
-                    trait_conditions.append(f"traits::text LIKE ${param_counter}")
+                    trait_conditions.append("traits::text LIKE %s")
                     params.append(f'%{trait["name"]}%')
-                    param_counter += 1
                 
                 if trait_conditions:
                     where_conditions.append(f"({' OR '.join(trait_conditions)})")
@@ -246,9 +240,15 @@ class SimpleTFTQuery:
             query = f"""
             SELECT 
                 COUNT(*) as play_count,
-                AVG(placement::float) as avg_placement,
-                COUNT(*) FILTER (WHERE placement = 1) * 100.0 / COUNT(*) as winrate,
-                COUNT(*) FILTER (WHERE placement <= 4) * 100.0 / COUNT(*) as top4_rate
+                COALESCE(AVG(placement::float), 0) as avg_placement,
+                CASE 
+                    WHEN COUNT(*) = 0 THEN 0 
+                    ELSE COUNT(*) FILTER (WHERE placement = 1) * 100.0 / COUNT(*) 
+                END as winrate,
+                CASE 
+                    WHEN COUNT(*) = 0 THEN 0 
+                    ELSE COUNT(*) FILTER (WHERE placement <= 4) * 100.0 / COUNT(*) 
+                END as top4_rate
             FROM participants 
             {where_clause}
             """
