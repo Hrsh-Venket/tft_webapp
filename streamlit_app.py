@@ -231,8 +231,256 @@ def main():
         query_input = st.text_area(
             "Query:",
             placeholder="SimpleTFTQuery().add_unit('Aphelios').get_stats()",
-            height=100
+            height=300
         )
+        
+        # Reference Lists
+        with st.expander("📋 Unit, Trait & Item Reference", expanded=False):
+            ref_col1, ref_col2, ref_col3 = st.columns(3)
+            
+            with ref_col1:
+                st.markdown("#### 🎯 **Units** (Set 14)")
+                st.markdown("""
+                **1-Cost:**
+                - Ahri
+                - Ashe
+                - Blitzcrank
+                - Camille
+                - Corki
+                - Darius
+                - Draven
+                - Elise
+                - Graves
+                - Illaoi
+                - Jax
+                - Karma
+                - Kassadin
+                - Kennen
+                - Lillia
+                - Lux
+                - Mordekaiser
+                - Nomsy
+                - Poppy
+                - Powder
+                - Seraphine
+                - Singed
+                - Soraka
+                - Steb
+                - Tristana
+                - Twitch
+                - Vander
+                - Violet
+                - Warwick
+                - Zoe
+                - Zyra
+                
+                **2-Cost:**
+                - Akali
+                - Ambessa
+                - Caitlyn
+                - Camille
+                - Cassiopeia
+                - Darius
+                - Ekko
+                - Gangplank
+                - Garen
+                - Hecarim
+                - Heimerdinger
+                - Irelia
+                - Jarvan
+                - Jinx
+                - Katarina
+                - Leblanc
+                - Lux
+                - Malzahar
+                - Nasus
+                - Nocturne
+                - Renata
+                - Rumble
+                - Shen
+                - Swain
+                - TwistedFate
+                - Urgot
+                - Vex
+                - Vladimir
+                - Ziggs
+                
+                **3-Cost:**
+                - Amumu
+                - Ezreal
+                - Gnar
+                - Loris
+                - Mordekaiser
+                - Nami
+                - Neeko
+                - Nunu
+                - Rell
+                - Scar
+                - Smeech
+                - Tristana
+                - Trundle
+                - Vi
+                - Zeri
+                
+                **4-Cost:**
+                - Ambessa
+                - Aphelios
+                - Caitlyn
+                - Elise
+                - Fiora
+                - Garen
+                - Heimerdinger
+                - Jayce
+                - Jinx
+                - Leona
+                - Morgana
+                - Nasus
+                - Renni
+                - Silco
+                - Swain
+                - Vander
+                - Viktor
+                - Vladimir
+                
+                **5-Cost:**
+                - Caitlyn
+                - Ekko
+                - Heimerdinger
+                - Jayce
+                - Jinx
+                - LeBlanc
+                - Malzahar
+                - Mel
+                - Rumble
+                - Silco
+                - Swain
+                - Viktor
+                - Warwick
+                """)
+            
+            with ref_col2:
+                st.markdown("#### ⚡ **Traits**")
+                st.markdown("""
+                **Origin Traits:**
+                - Zaun
+                - Piltover
+                - Noxus
+                - Demacia
+                - Freljord
+                - Bilgewater
+                - Ixtal
+                - Bandle City
+                - Void
+                
+                **Class Traits:**
+                - Academy
+                - Ambusher
+                - Artillerist
+                - Automata
+                - BlackRose
+                - Bruiser
+                - ChemBaron
+                - Conqueror
+                - Dominator
+                - Enforcer
+                - Experiment
+                - Family
+                - Firelight
+                - FormSwapper
+                - HighRoller
+                - Junker
+                - Pit Fighter
+                - Rebel
+                - Scrap
+                - Sentinel
+                - Sniper
+                - Socialite
+                - Sorcerer
+                - Syndicate
+                - Visionary
+                - Watcher
+                
+                **Unique Traits:**
+                - Anomaly
+                - Chem-Baron
+                - Family
+                - Firelight
+                - Junker-King
+                - PitFighter
+                - Quickstriker
+                - Rebel
+                - WatcherCult
+                """)
+            
+            with ref_col3:
+                st.markdown("#### 🛡️ **Items**")
+                st.markdown("""
+                **AD Items:**
+                - BFSword
+                - InfinityEdge
+                - JeweledGauntlet
+                - LastWhisper
+                - Bloodthirster
+                - GuardianAngel
+                - HextechGunblade
+                - RunaansHurricane
+                - DeathBlade
+                - GiantSlayer
+                - StatikkShiv
+                - TitansResolve
+                - EdgeOfNight
+                - CollectorsBrand
+                - RedBuff
+                
+                **AP Items:**
+                - RabadonsDeathcap
+                - ArchangelsStaff
+                - Morellonomicon
+                - VoidStaff
+                - JeweledGauntlet
+                - HextechGunblade
+                - SpearOfShojin
+                - BlueBuff
+                - GunbladeScimitar
+                - ChaliceOfPower
+                - AdaptiveHelm
+                - Crownguard
+                - NashorsTooth
+                
+                **Tank Items:**
+                - Gargoyle
+                - DragonsClaw
+                - ThornMail
+                - WarmogsArmor
+                - FrozenHeart
+                - SunfireCape
+                - AdaptiveHelm
+                - Crownguard
+                - BrambleVest
+                - RedeemerVeil
+                - Protector
+                
+                **Support Items:**
+                - Chalice
+                - ZephyrBlade
+                - Shroud
+                - LocketOfTheIronSolari
+                - RedemptionVeil
+                - ZzRotPortal
+                - BansheeVeil
+                - QuicksilverSash
+                - SpearOfShojin
+                - TacticiansCrown
+                
+                **Special Items:**
+                - SteraksGage
+                - GuinsoosRageblade
+                - TitanicHydra
+                - BladedArmor
+                - IonicSpark
+                - RunicEcho
+                - HextechSoulstealer
+                """)
         
         # Comprehensive Documentation
         with st.expander("📚 Complete Query Documentation", expanded=True):
