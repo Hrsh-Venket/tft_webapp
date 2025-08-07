@@ -225,33 +225,191 @@ def main():
     # Tab 3: Query Interface
     with tab3:
         st.header("TFT Query Interface")
-        st.write("Enter your TFT query using the same format as your existing querying system:")
+        st.write("Enter your TFT query using SimpleTFTQuery with comprehensive filtering capabilities:")
         
         # Query input
         query_input = st.text_area(
             "Query:",
-            placeholder="TFTQuery().add_unit('TFT14_Aphelios').get_stats()",
+            placeholder="SimpleTFTQuery().add_unit('Aphelios').get_stats()",
             height=100
         )
         
-        # Examples
-        with st.expander("Query Examples"):
+        # Comprehensive Documentation
+        with st.expander("📚 Complete Query Documentation", expanded=True):
+            
+            st.markdown("### Available Methods")
+            
+            # Unit Filtering Section
+            st.markdown("#### 🎯 Unit Filtering")
+            with st.container():
+                col1, col2 = st.columns(2)
+                with col1:
+                    st.code("""
+# Basic unit presence
+SimpleTFTQuery().add_unit('Aphelios')
+
+# Exact unit count
+SimpleTFTQuery().add_unit_count('Jinx', 2)
+
+# Unit star level (1-3 stars)
+SimpleTFTQuery().add_unit_star_level('Aphelios', min_star=2)
+                    """)
+                with col2:
+                    st.code("""
+# Items on unit (2+ items = carry)
+SimpleTFTQuery().add_unit_item_count('Aphelios', min_count=2)
+
+# Specific item on specific unit
+SimpleTFTQuery().add_item_on_unit('Aphelios', 'InfinityEdge')
+                    """)
+            
+            # Trait Filtering Section  
+            st.markdown("#### ⚡ Trait Filtering")
             st.code("""
-# Basic unit query
-TFTQuery().add_unit('TFT14_Aphelios').get_stats()
-
-# Trait query  
-TFTQuery().add_trait('TFT14_Vanguard', min_tier=2).get_stats()
-
-# Player level query
-TFTQuery().add_player_level(min_level=8, max_level=10).get_stats()
-
-# Cluster query
-TFTQuery().set_sub_cluster(5).get_stats()
-
-# Combined query
-TFTQuery().add_unit('TFT14_Jinx').add_trait('TFT14_Rebel', min_tier=3).get_stats()
+# Trait activation levels (1-4 tiers)
+SimpleTFTQuery().add_trait('Vanguard', min_tier=2)          # Vanguard 2+
+SimpleTFTQuery().add_trait('Rebel', min_tier=3, max_tier=3) # Exactly Rebel 3
             """)
+            
+            # Player Performance Section
+            st.markdown("#### 📊 Player Performance")
+            with st.container():
+                col1, col2 = st.columns(2)
+                with col1:
+                    st.code("""
+# Player level at game end
+SimpleTFTQuery().add_player_level(min_level=8)
+                    """)
+                with col2:
+                    st.code("""
+# Last round survived
+SimpleTFTQuery().add_last_round(min_round=30)
+                    """)
+            
+            # Meta Filtering Section
+            st.markdown("#### 🔮 Meta & Augments")
+            with st.container():
+                col1, col2 = st.columns(2)
+                with col1:
+                    st.code("""
+# Augment filtering
+SimpleTFTQuery().add_augment('CombatTraining')
+                    """)
+                with col2:
+                    st.code("""
+# Patch version
+SimpleTFTQuery().set_patch('14.22')
+                    """)
+            
+            # Advanced Filtering Section
+            st.markdown("#### 🔧 Advanced Filtering")
+            st.code("""
+# Custom SQL conditions
+SimpleTFTQuery().add_custom_filter("placement <= %s", [2])  # Top 2 finishes only
+
+# Cluster filtering (if cluster data available)
+SimpleTFTQuery().set_sub_cluster(5)     # Specific sub-cluster
+SimpleTFTQuery().set_main_cluster(2)    # Specific main cluster
+            """)
+            
+            # Method Chaining Section
+            st.markdown("#### 🔗 Complex Queries (Method Chaining)")
+            st.code("""
+# Carry composition analysis
+stats = (SimpleTFTQuery()
+    .add_unit('Aphelios')                          # Must have Aphelios
+    .add_unit_star_level('Aphelios', min_star=2)   # 2-star or better
+    .add_unit_item_count('Aphelios', min_count=2)  # With 2+ items (carry setup)
+    .add_trait('Sniper', min_tier=2)               # Sniper 2+ active
+    .add_player_level(min_level=8)                 # High level games
+    .add_last_round(min_round=25)                  # Survived to late game
+    .get_stats())
+
+# Meta analysis for current patch
+patch_analysis = (SimpleTFTQuery()
+    .set_patch('14.22')                            # Current patch
+    .add_player_level(min_level=8)                 # High level only
+    .add_last_round(min_round=30)                  # Late game survivors
+    .get_stats())
+            """)
+            
+            # Execution Methods Section
+            st.markdown("#### 📋 Execution Methods")
+            with st.container():
+                col1, col2 = st.columns(2)
+                with col1:
+                    st.code("""
+# Get statistical summary
+stats = query.get_stats()
+# Returns: {
+#   'play_count': 24,
+#   'avg_placement': 4.17,
+#   'winrate': 12.5,
+#   'top4_rate': 50.0
+# }
+                    """)
+                with col2:
+                    st.code("""
+# Get detailed participant data
+participants = query.execute()
+# Returns: [
+#   {
+#     'match_id': '...',
+#     'placement': 1,
+#     'level': 9,
+#     'units': [...],
+#     'traits': [...],
+#     # ... more details
+#   }
+# ]
+                    """)
+            
+            # Important Notes Section
+            st.markdown("#### ⚠️ Important Notes")
+            st.info("""
+            **No Prefixes Needed**: Unit and trait names are pre-cleaned. Use `'Aphelios'` not `'TFT14_Aphelios'`
+            
+            **Logical Operations**: Multiple filters use AND logic by default. Each filter must be satisfied.
+            
+            **Performance**: More specific filters first (exact unit names) are more efficient than broad filters.
+            """)
+            
+            # Quick Examples Section
+            st.markdown("#### ⚡ Quick Examples")
+            example_col1, example_col2, example_col3 = st.columns(3)
+            
+            with example_col1:
+                st.markdown("**Basic Analysis**")
+                st.code("""
+# Aphelios carry performance
+SimpleTFTQuery()
+  .add_unit('Aphelios')
+  .add_unit_item_count('Aphelios', 2)
+  .get_stats()
+                """)
+            
+            with example_col2:
+                st.markdown("**Trait Comparison**")  
+                st.code("""
+# Vanguard 2 vs Vanguard 4
+SimpleTFTQuery()
+  .add_trait('Vanguard', 2, 2)
+  .get_stats()
+
+SimpleTFTQuery()
+  .add_trait('Vanguard', 4, 4)
+  .get_stats()
+                """)
+            
+            with example_col3:
+                st.markdown("**Item Testing**")
+                st.code("""
+# Compare Jinx items
+SimpleTFTQuery()
+  .add_unit('Jinx')
+  .add_item_on_unit('Jinx', 'InfinityEdge')
+  .get_stats()
+                """)
         
         # Execute query button
         if st.button("Execute Query", type="primary"):
