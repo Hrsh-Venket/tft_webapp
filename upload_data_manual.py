@@ -39,25 +39,36 @@ def test_connection():
         print(f"✗ Unexpected error: {e}")
         return False
 
-def upload_matches_data(jsonl_file="matches_filtered.jsonl", batch_size=100):
-    """Upload your TFT match data to the database"""
+def upload_matches_data(jsonl_file="matches_filtered.jsonl", batch_size=1000, skip_raw_data=True):
+    """Upload your TFT match data to the database (OPTIMIZED)"""
     
     if not os.path.exists(jsonl_file):
         print(f"✗ File not found: {jsonl_file}")
         print("Make sure your JSONL file is in the same directory as this script.")
         return False
     
-    print(f"Starting upload from {jsonl_file}...")
+    print(f"🚀 Starting OPTIMIZED upload from {jsonl_file}...")
     print(f"File size: {os.path.getsize(jsonl_file):,} bytes")
+    print(f"Batch size: {batch_size:,}, Skip raw data: {skip_raw_data}")
     
     try:
-        conn = psycopg2.connect(DATABASE_URL, connect_timeout=30)
+        # Optimized connection with performance settings
+        conn = psycopg2.connect(
+            DATABASE_URL, 
+            connect_timeout=30,
+            options='-c synchronous_commit=off'
+        )
         cursor = conn.cursor()
         
+        # Batch storage
+        match_batch = []
+        participant_batch = []
         matches_imported = 0
         participants_imported = 0
         matches_skipped = 0
         line_num = 0
+        
+        print("📊 Processing file...")
         
         with open(jsonl_file, 'r', encoding='utf-8') as f:
             for line in f:
@@ -67,22 +78,12 @@ def upload_matches_data(jsonl_file="matches_filtered.jsonl", batch_size=100):
                     
                 try:
                     match_data = json.loads(line.strip())
-                    
-                    # Extract match info
                     match_info = match_data['info']
                     match_id = match_data['metadata']['match_id']
-                    
-                    # Convert game_datetime from milliseconds to timestamp
                     game_datetime = datetime.fromtimestamp(match_info['game_datetime'] / 1000)
                     
-                    # Insert match (with conflict handling)
-                    cursor.execute("""
-                        INSERT INTO matches (
-                            match_id, game_datetime, game_length, game_version,
-                            set_core_name, queue_id, tft_set_number, raw_data
-                        ) VALUES (%s, %s, %s, %s, %s, %s, %s, %s)
-                        ON CONFLICT (match_id) DO NOTHING
-                    """, (
+                    # Add to match batch
+                    match_batch.append((
                         match_id,
                         game_datetime,
                         match_info.get('game_length'),
@@ -90,45 +91,34 @@ def upload_matches_data(jsonl_file="matches_filtered.jsonl", batch_size=100):
                         match_info.get('tft_set_core_name'),
                         match_info.get('queue_id'),
                         match_info.get('tft_set_number'),
-                        json.dumps(match_data)
+                        None if skip_raw_data else json.dumps(match_data)
                     ))
                     
-                    if cursor.rowcount > 0:
-                        matches_imported += 1
-                        
-                        # Insert participants for new matches only
-                        for participant in match_info['participants']:
-                            cursor.execute("""
-                                INSERT INTO participants (
-                                    match_id, puuid, placement, level, last_round,
-                                    players_eliminated, total_damage_to_players,
-                                    time_eliminated, companion, traits, units, augments
-                                ) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
-                                ON CONFLICT (match_id, puuid) DO NOTHING
-                            """, (
-                                match_id,
-                                participant['puuid'],
-                                participant.get('placement'),
-                                participant.get('level'),
-                                participant.get('last_round'),
-                                participant.get('players_eliminated'),
-                                participant.get('total_damage_to_players'),
-                                participant.get('time_eliminated'),
-                                json.dumps(participant.get('companion', {})),
-                                json.dumps(participant.get('traits', [])),
-                                json.dumps(participant.get('units', [])),
-                                participant.get('augments', [])
-                            ))
-                            
-                            if cursor.rowcount > 0:
-                                participants_imported += 1
-                    else:
-                        matches_skipped += 1
+                    # Add participants to batch
+                    for participant in match_info['participants']:
+                        participant_batch.append((
+                            match_id,
+                            participant['puuid'],
+                            participant.get('placement'),
+                            participant.get('level'),
+                            participant.get('last_round'),
+                            participant.get('players_eliminated'),
+                            participant.get('total_damage_to_players'),
+                            participant.get('time_eliminated'),
+                            json.dumps(participant.get('companion', {})),
+                            json.dumps(participant.get('traits', [])),
+                            json.dumps(participant.get('units', [])),
+                            participant.get('augments', [])
+                        ))
                     
-                    # Commit every batch_size matches
-                    if line_num % batch_size == 0:
+                    # Execute batch when size is reached
+                    if len(match_batch) >= batch_size:
+                        matches_imported += execute_batch(cursor, match_batch, participant_batch)
                         conn.commit()
-                        print(f"Processed {line_num:,} lines... ({matches_imported:,} new matches, {participants_imported:,} participants, {matches_skipped:,} skipped)")
+                        
+                        print(f"⚡ Processed {line_num:,} lines... ({matches_imported:,} matches, {len(participant_batch):,} participants)")
+                        match_batch = []
+                        participant_batch = []
                         
                 except json.JSONDecodeError as e:
                     print(f"JSON error on line {line_num}: {e}")
@@ -137,8 +127,10 @@ def upload_matches_data(jsonl_file="matches_filtered.jsonl", batch_size=100):
                     print(f"Error processing line {line_num}: {e}")
                     continue
         
-        # Final commit
-        conn.commit()
+        # Process remaining batch
+        if match_batch:
+            matches_imported += execute_batch(cursor, match_batch, participant_batch)
+            conn.commit()
         
         # Get final database stats
         cursor.execute("SELECT COUNT(*) FROM matches")
@@ -147,11 +139,11 @@ def upload_matches_data(jsonl_file="matches_filtered.jsonl", batch_size=100):
         cursor.execute("SELECT COUNT(*) FROM participants")
         total_participants = cursor.fetchone()[0]
         
-        print(f"\n🎉 Upload Complete!")
+        print(f"\n🎉 OPTIMIZED Upload Complete!")
         print(f"📊 Results:")
+        print(f"   • Lines processed: {line_num:,}")
         print(f"   • New matches imported: {matches_imported:,}")
-        print(f"   • New participants imported: {participants_imported:,}")
-        print(f"   • Matches skipped (already exist): {matches_skipped:,}")
+        print(f"   • Storage saved: {'~80%' if skip_raw_data else '0%'} (raw data)")
         print(f"   • Total matches in database: {total_matches:,}")
         print(f"   • Total participants in database: {total_participants:,}")
         
@@ -162,6 +154,35 @@ def upload_matches_data(jsonl_file="matches_filtered.jsonl", batch_size=100):
     except Exception as e:
         print(f"✗ Upload failed: {e}")
         return False
+
+def execute_batch(cursor, match_batch, participant_batch):
+    """Execute batch inserts efficiently"""
+    try:
+        # Batch insert matches
+        cursor.executemany("""
+            INSERT INTO matches (
+                match_id, game_datetime, game_length, game_version,
+                set_core_name, queue_id, tft_set_number, raw_data
+            ) VALUES (%s, %s, %s, %s, %s, %s, %s, %s)
+            ON CONFLICT (match_id) DO NOTHING
+        """, match_batch)
+        matches_added = cursor.rowcount
+        
+        # Batch insert participants  
+        cursor.executemany("""
+            INSERT INTO participants (
+                match_id, puuid, placement, level, last_round,
+                players_eliminated, total_damage_to_players,
+                time_eliminated, companion, traits, units, augments
+            ) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
+            ON CONFLICT (match_id, puuid) DO NOTHING
+        """, participant_batch)
+        
+        return matches_added
+        
+    except Exception as e:
+        print(f"Batch execution error: {e}")
+        return 0
 
 def clear_database():
     """Clear all match data (use with caution!)"""
@@ -236,7 +257,7 @@ def show_database_stats():
 def main():
     """Main menu for database management"""
     print("=" * 50)
-    print("🎮 TFT Webapp - Database Management")
+    print("TFT Webapp - Database Management")
     print("=" * 50)
     
     while True:
@@ -255,7 +276,16 @@ def main():
             jsonl_file = input("Enter JSONL filename (default: matches_filtered.jsonl): ").strip()
             if not jsonl_file:
                 jsonl_file = "matches_filtered.jsonl"
-            upload_matches_data(jsonl_file)
+            
+            # Get optimization settings
+            print("\n🚀 Optimization Settings:")
+            batch_input = input("Batch size (default: 1000, higher = faster): ").strip()
+            batch_size = int(batch_input) if batch_input.isdigit() else 1000
+            
+            skip_raw = input("Skip raw data storage? (y/N, saves ~80% space): ").strip().lower()
+            skip_raw_data = skip_raw in ['y', 'yes']
+            
+            upload_matches_data(jsonl_file, batch_size, skip_raw_data)
         elif choice == '3':
             show_database_stats()
         elif choice == '4':

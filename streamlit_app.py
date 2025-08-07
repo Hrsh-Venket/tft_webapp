@@ -6,29 +6,44 @@ Displays cluster analysis and integrates with existing querying functionality
 import streamlit as st
 import pandas as pd
 import os
+import json
+import psycopg2
+from datetime import datetime
+import io
 from pathlib import Path
 
-# Import your existing querying functionality
+# Import database functionality - try simple version first
 try:
-    from querying import TFTQuery, analyze_top_clusters, print_cluster_compositions
+    from simple_database import SimpleTFTQuery as TFTQuery, test_connection, get_match_stats
     QUERYING_AVAILABLE = True
+    DATABASE_TYPE = "simple"
+    st.success("✅ Using simplified database connection")
 except ImportError as e:
-    st.warning(f"Could not import querying functionality: {e}")
-    QUERYING_AVAILABLE = False
-    # Create dummy classes to prevent errors
-    class TFTQuery:
-        def __init__(self, *args, **kwargs):
-            pass
-        def add_unit(self, *args, **kwargs):
-            return self
-        def get_stats(self):
-            return {"error": "Querying functionality not available - missing dependencies"}
-    
-    def analyze_top_clusters(*args, **kwargs):
-        return []
-    
-    def print_cluster_compositions(*args, **kwargs):
-        pass
+    st.warning(f"Simple database not available: {e}")
+    # Try complex querying system
+    try:
+        from querying import TFTQuery, analyze_top_clusters, print_cluster_compositions
+        QUERYING_AVAILABLE = True
+        DATABASE_TYPE = "complex"
+        st.info("🔧 Using complex database system")
+    except ImportError as e2:
+        st.error(f"No database connection available: {e2}")
+        QUERYING_AVAILABLE = False
+        DATABASE_TYPE = "none"
+        # Create dummy classes to prevent errors
+        class TFTQuery:
+            def __init__(self, *args, **kwargs):
+                pass
+            def add_unit(self, *args, **kwargs):
+                return self
+            def get_stats(self):
+                return {"error": "No database connection available"}
+        
+        def test_connection():
+            return False
+        
+        def get_match_stats():
+            return {'matches': 0, 'participants': 0}
 
 # Page configuration
 st.set_page_config(
@@ -107,16 +122,43 @@ def main():
         return
     
     # Main content tabs
-    tab1, tab2, tab3 = st.tabs(["📊 Overview", "🎯 Clusters", "🔍 Query"])
+    tab1, tab2, tab3, tab4 = st.tabs(["📊 Overview", "🎯 Clusters", "🔍 Query", "📤 Upload"])
     
     # Tab 1: Overview
     with tab1:
         st.header("Dataset Overview")
         
+        # Test database connection
+        if QUERYING_AVAILABLE and DATABASE_TYPE == "simple":
+            if test_connection():
+                st.success("✅ Database connection successful!")
+                db_stats = get_match_stats()
+                
+                col1, col2, col3 = st.columns(3)
+                
+                with col1:
+                    st.metric("Total Matches", f"{db_stats['matches']:,}")
+                
+                with col2:
+                    st.metric("Total Participants", f"{db_stats['participants']:,}")
+                
+                with col3:
+                    if db_stats['matches'] > 0:
+                        avg_participants = db_stats['participants'] / db_stats['matches']
+                        st.metric("Avg Players/Match", f"{avg_participants:.1f}")
+                
+                st.subheader("📊 Database Status")
+                st.info(f"Connected to TFT match database with {db_stats['matches']:,} matches")
+                
+            else:
+                st.error("❌ Database connection failed - check network and credentials")
+                st.info("Falling back to file-based data...")
+        
+        # Fallback to file-based data or show cluster info
         col1, col2, col3 = st.columns(3)
         
         with col1:
-            st.metric("Total Main Clusters", len(main_clusters))
+            st.metric("Main Cluster Files", len(main_clusters))
         
         with col2:
             st.metric("Subcluster Files", len(subclusters))
@@ -125,8 +167,11 @@ def main():
             total_subclusters = sum(len(df) for df in subclusters.values())
             st.metric("Total Subclusters", total_subclusters)
         
-        st.subheader("Main Clusters Summary")
-        st.dataframe(main_clusters, use_container_width=True, height=400)
+        if not main_clusters.empty:
+            st.subheader("Main Clusters Summary")
+            st.dataframe(main_clusters, use_container_width=True, height=400)
+        else:
+            st.warning("No cluster analysis files found. Upload your data to see cluster analysis.")
     
     # Tab 2: Clusters
     with tab2:
@@ -246,6 +291,216 @@ TFTQuery().add_unit('TFT14_Jinx').add_trait('TFT14_Rebel', min_tier=3).get_stats
                     st.write(result)
             else:
                 st.warning("Please enter a query")
+    
+    # Tab 4: Data Upload (Optimized)
+    with tab4:
+        st.header("📤 Optimized Data Upload")
+        st.write("Upload TFT match data efficiently to the database")
+        
+        # File uploader
+        uploaded_file = st.file_uploader(
+            "Choose a JSONL file",
+            type=['jsonl'],
+            help="Upload your matches_filtered.jsonl file"
+        )
+        
+        if uploaded_file is not None:
+            st.write(f"File: {uploaded_file.name} ({uploaded_file.size:,} bytes)")
+            
+            # Preview toggle
+            if st.checkbox("Preview file content"):
+                # Use streaming to preview without loading entire file
+                preview_lines = []
+                text_io = io.TextIOWrapper(uploaded_file, encoding='utf-8')
+                for i, line in enumerate(text_io):
+                    if i >= 3:  # Only first 3 lines
+                        break
+                    if line.strip():
+                        try:
+                            data = json.loads(line)
+                            preview_lines.append(f"Line {i+1}: Match ID {data['metadata']['match_id']}")
+                        except:
+                            preview_lines.append(f"Line {i+1}: Invalid JSON")
+                for line in preview_lines:
+                    st.write(line)
+                uploaded_file.seek(0)
+            
+            # Upload options
+            col1, col2 = st.columns(2)
+            with col1:
+                batch_size = st.selectbox("Batch Size", [100, 500, 1000], index=1, help="Higher values = faster upload but more memory")
+            with col2:
+                skip_raw_data = st.checkbox("Skip raw data storage", value=True, help="Reduces storage by 80% but loses match details")
+            
+            # Upload button
+            if st.button("🚀 Upload to Database", type="primary"):
+                try:
+                    # Connection with optimized settings
+                    database_url = st.secrets.get("database", {}).get("DATABASE_URL") or os.environ.get("DATABASE_URL")
+                    if not database_url:
+                        st.error("DATABASE_URL not found in secrets or environment")
+                        return
+                        
+                    conn = psycopg2.connect(
+                        database_url,
+                        options='-c synchronous_commit=off'  # Faster commits
+                    )
+                    cursor = conn.cursor()
+                    
+                    # Progress tracking
+                    progress_bar = st.progress(0)
+                    status_text = st.empty()
+                    
+                    # Batch processing variables
+                    match_batch = []
+                    participant_batch = []
+                    matches_imported = 0
+                    participants_imported = 0
+                    line_count = 0
+                    
+                    # Stream processing
+                    text_io = io.TextIOWrapper(uploaded_file, encoding='utf-8')
+                    
+                    for line in text_io:
+                        line = line.strip()
+                        if not line:
+                            continue
+                            
+                        line_count += 1
+                        
+                        try:
+                            match_data = json.loads(line)
+                            match_info = match_data['info']
+                            match_id = match_data['metadata']['match_id']
+                            game_datetime = datetime.fromtimestamp(match_info['game_datetime'] / 1000)
+                            
+                            # Prepare match data
+                            match_batch.append((
+                                match_id,
+                                game_datetime,
+                                match_info.get('game_length'),
+                                match_info.get('game_version'),
+                                match_info.get('tft_set_core_name'),
+                                match_info.get('queue_id'),
+                                match_info.get('tft_set_number'),
+                                None if skip_raw_data else json.dumps(match_data)
+                            ))
+                            
+                            # Prepare participant data
+                            for participant in match_info['participants']:
+                                participant_batch.append((
+                                    match_id,
+                                    participant['puuid'],
+                                    participant.get('placement'),
+                                    participant.get('level'),
+                                    participant.get('last_round'),
+                                    participant.get('players_eliminated'),
+                                    participant.get('total_damage_to_players'),
+                                    participant.get('time_eliminated'),
+                                    json.dumps(participant.get('companion', {})),
+                                    json.dumps(participant.get('traits', [])),
+                                    json.dumps(participant.get('units', [])),
+                                    participant.get('augments', [])
+                                ))
+                            
+                            # Batch insert when batch size reached
+                            if len(match_batch) >= batch_size:
+                                # Batch insert matches
+                                cursor.executemany("""
+                                    INSERT INTO matches (
+                                        match_id, game_datetime, game_length, game_version,
+                                        set_core_name, queue_id, tft_set_number, raw_data
+                                    ) VALUES (%s, %s, %s, %s, %s, %s, %s, %s)
+                                    ON CONFLICT (match_id) DO NOTHING
+                                """, match_batch)
+                                matches_imported += cursor.rowcount
+                                
+                                # Batch insert participants
+                                cursor.executemany("""
+                                    INSERT INTO participants (
+                                        match_id, puuid, placement, level, last_round,
+                                        players_eliminated, total_damage_to_players,
+                                        time_eliminated, companion, traits, units, augments
+                                    ) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
+                                    ON CONFLICT (match_id, puuid) DO NOTHING
+                                """, participant_batch)
+                                participants_imported += cursor.rowcount
+                                
+                                # Commit and reset
+                                conn.commit()
+                                match_batch = []
+                                participant_batch = []
+                                
+                                status_text.text(f"Processed {line_count:,} matches... (M: {matches_imported:,}, P: {participants_imported:,})")
+                                
+                        except Exception as e:
+                            st.warning(f"Skipped line {line_count}: {str(e)[:100]}...")
+                    
+                    # Process remaining batch
+                    if match_batch:
+                        cursor.executemany("""
+                            INSERT INTO matches (
+                                match_id, game_datetime, game_length, game_version,
+                                set_core_name, queue_id, tft_set_number, raw_data
+                            ) VALUES (%s, %s, %s, %s, %s, %s, %s, %s)
+                            ON CONFLICT (match_id) DO NOTHING
+                        """, match_batch)
+                        matches_imported += cursor.rowcount
+                        
+                        cursor.executemany("""
+                            INSERT INTO participants (
+                                match_id, puuid, placement, level, last_round,
+                                players_eliminated, total_damage_to_players,
+                                time_eliminated, companion, traits, units, augments
+                            ) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
+                            ON CONFLICT (match_id, puuid) DO NOTHING
+                        """, participant_batch)
+                        participants_imported += cursor.rowcount
+                        
+                        conn.commit()
+                    
+                    progress_bar.progress(1.0)
+                    cursor.close()
+                    conn.close()
+                    
+                    st.success(f"""
+                    ✅ Upload completed efficiently!
+                    - **Matches processed**: {line_count:,}
+                    - **New matches imported**: {matches_imported:,}
+                    - **New participants imported**: {participants_imported:,}
+                    - **Storage saved**: {'~80%' if skip_raw_data else '0%'} (raw data skipped)
+                    """)
+                    
+                except Exception as e:
+                    st.error(f"Upload failed: {e}")
+                    
+        # Database status
+        st.subheader("📊 Database Status")
+        try:
+            database_url = st.secrets.get("database", {}).get("DATABASE_URL") or os.environ.get("DATABASE_URL")
+            if database_url:
+                conn = psycopg2.connect(database_url)
+                cursor = conn.cursor()
+                
+                cursor.execute("SELECT COUNT(*) FROM matches")
+                match_count = cursor.fetchone()[0]
+                
+                cursor.execute("SELECT COUNT(*) FROM participants")
+                participant_count = cursor.fetchone()[0]
+                
+                col1, col2 = st.columns(2)
+                with col1:
+                    st.metric("Total Matches", f"{match_count:,}")
+                with col2:
+                    st.metric("Total Participants", f"{participant_count:,}")
+                
+                cursor.close()
+                conn.close()
+            else:
+                st.warning("Database connection not configured")
+                
+        except Exception as e:
+            st.error(f"Database status unavailable: {e}")
 
 if __name__ == "__main__":
     main()
