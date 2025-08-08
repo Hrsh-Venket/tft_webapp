@@ -234,6 +234,55 @@ def main():
             height=300
         )
         
+        # Query Documentation
+        with st.expander("📖 Query Documentation", expanded=False):
+            st.markdown("""
+            ## Filter Methods
+
+            ### Units
+            - `add_unit(unit_id, must_have=True)` - Unit presence/absence
+            - `add_unit_count(unit_id, count)` - Exact unit count
+            - `add_unit_star_level(unit_id, min_star=1, max_star=3)` - Unit star level
+            - `add_unit_item_count(unit_id, min_count=0, max_count=3)` - Items on unit
+
+            ### Items
+            - `add_item_on_unit(unit_id, item_id)` - Specific item on specific unit
+
+            ### Traits
+            - `add_trait(trait_name, min_tier=1, max_tier=4)` - Trait tier
+
+            ### Player Performance
+            - `add_player_level(min_level=1, max_level=10)` - Player level range
+            - `add_last_round(min_round=1, max_round=50)` - Elimination round
+            - `add_augment(augment_id)` - Specific augment
+
+            ### Clusters
+            - `set_sub_cluster(cluster_id)` - Sub-cluster filter
+            - `set_main_cluster(cluster_id)` - Main cluster filter
+
+            ## Logical Operations
+            - `or_(other_queries)` - Combine with OR logic
+            - `not_(other_query=None)` - NOT logic
+            - `xor(other_query)` - XOR logic (exactly one true)
+
+            ## Examples
+            ```python
+            # Basic query
+            TFTQuery().add_unit('Jinx').get_stats()
+            
+            # OR logic: Jinx OR Ahri
+            TFTQuery().add_unit('Jinx').or_(TFTQuery().add_unit('Ahri')).get_stats()
+            
+            # NOT logic: Star Guardian but NOT Jinx
+            TFTQuery().add_trait('Star_Guardian').not_(TFTQuery().add_unit('Jinx')).get_stats()
+            
+            # Chaining: (A OR B) AND C
+            TFTQuery().add_unit('Jinx').or_(TFTQuery().add_unit('Ahri')).add_player_level(9).get_stats()
+            ```
+
+            **Results:** `get_stats()` returns `{play_count, avg_placement, winrate, top4_rate}`
+            """)
+
         # Reference Lists
         with st.expander("📋 Unit, Trait & Item Reference", expanded=False):
             ref_col1, ref_col2, ref_col3 = st.columns(3)
