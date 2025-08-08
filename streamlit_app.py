@@ -7,7 +7,7 @@ import streamlit as st
 import pandas as pd
 import os
 import json
-import psycopg2No
+import psycopg2
 from datetime import datetime
 import io
 from pathlib import Path
