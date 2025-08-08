@@ -640,3 +640,252 @@ class SimpleTFTQuery:
         except Exception as e:
             logger.error(f"Execute query failed: {e}")
             return []
+    
+    def or_(self, *other_queries):
+        """
+        Combine this query with other queries using OR logic.
+        Returns a new SimpleTFTQuery instance with combined filters.
+        
+        Usage: SimpleTFTQuery().add_unit('Jinx').or_(SimpleTFTQuery().add_unit('Ahri'))
+        """
+        if not other_queries:
+            return self
+        
+        # Create new query instance
+        new_query = SimpleTFTQuery()
+        new_query._sub_cluster_id = self._sub_cluster_id
+        new_query._main_cluster_id = self._main_cluster_id
+        
+        # Build SQL conditions from all queries
+        all_conditions = []
+        all_params = []
+        param_counter = 0
+        
+        # Get current query conditions
+        current_conditions, current_params = self._build_where_conditions()
+        if current_conditions:
+            # Rename parameters to avoid conflicts
+            renamed_conditions = []
+            for condition in current_conditions:
+                for i, param in enumerate(current_params):
+                    condition = condition.replace('%s', f'%s', 1)  # Keep placeholder format
+                renamed_conditions.append(condition)
+            
+            if renamed_conditions:
+                current_clause = f"({' AND '.join(renamed_conditions)})"
+                all_conditions.append(current_clause)
+                all_params.extend(current_params)
+        
+        # Get conditions from other queries
+        for other_query in other_queries:
+            if hasattr(other_query, '_build_where_conditions'):
+                other_conditions, other_params = other_query._build_where_conditions()
+                if other_conditions:
+                    # Rename parameters to avoid conflicts
+                    renamed_conditions = []
+                    for condition in other_conditions:
+                        for i, param in enumerate(other_params):
+                            condition = condition.replace('%s', f'%s', 1)  # Keep placeholder format
+                        renamed_conditions.append(condition)
+                    
+                    if renamed_conditions:
+                        other_clause = f"({' AND '.join(renamed_conditions)})"
+                        all_conditions.append(other_clause)
+                        all_params.extend(other_params)
+        
+        # Combine with OR logic
+        if all_conditions:
+            combined_condition = f"({' OR '.join(all_conditions)})"
+            new_query.custom_filters.append({'condition': combined_condition, 'params': all_params})
+        
+        return new_query
+    
+    def not_(self, other_query=None):
+        """
+        Apply NOT logic to this query or to another query.
+        Returns a new SimpleTFTQuery instance.
+        
+        Usage: 
+        - SimpleTFTQuery().not_(SimpleTFTQuery().add_unit('Jinx')) = NOT Jinx
+        - SimpleTFTQuery().add_trait('SG').not_(SimpleTFTQuery().add_unit('Jinx')) = SG AND NOT Jinx
+        """
+        new_query = SimpleTFTQuery()
+        new_query._sub_cluster_id = self._sub_cluster_id
+        new_query._main_cluster_id = self._main_cluster_id
+        
+        if other_query is None:
+            # NOT this query
+            current_conditions, current_params = self._build_where_conditions()
+            if current_conditions:
+                current_clause = f"({' AND '.join(current_conditions)})"
+                not_condition = f"NOT {current_clause}"
+                new_query.custom_filters.append({'condition': not_condition, 'params': current_params})
+        else:
+            # This query AND NOT other_query
+            current_conditions, current_params = self._build_where_conditions()
+            if hasattr(other_query, '_build_where_conditions'):
+                other_conditions, other_params = other_query._build_where_conditions()
+                
+                all_params = current_params[:]
+                conditions_parts = []
+                
+                # Add current query conditions
+                if current_conditions:
+                    current_clause = f"({' AND '.join(current_conditions)})"
+                    conditions_parts.append(current_clause)
+                
+                # Add NOT other query conditions
+                if other_conditions:
+                    other_clause = f"({' AND '.join(other_conditions)})"
+                    conditions_parts.append(f"NOT {other_clause}")
+                    all_params.extend(other_params)
+                
+                if conditions_parts:
+                    combined_condition = ' AND '.join(conditions_parts)
+                    new_query.custom_filters.append({'condition': combined_condition, 'params': all_params})
+        
+        return new_query
+    
+    def xor(self, other_query):
+        """
+        Combine this query with another query using XOR logic.
+        Returns a new SimpleTFTQuery instance.
+        
+        Usage: SimpleTFTQuery().add_unit('Jinx').xor(SimpleTFTQuery().add_unit('Ahri'))
+        """
+        new_query = SimpleTFTQuery()
+        new_query._sub_cluster_id = self._sub_cluster_id
+        new_query._main_cluster_id = self._main_cluster_id
+        
+        if hasattr(other_query, '_build_where_conditions'):
+            current_conditions, current_params = self._build_where_conditions()
+            other_conditions, other_params = other_query._build_where_conditions()
+            
+            all_params = current_params[:]
+            all_params.extend(other_params)
+            
+            # XOR: (A AND NOT B) OR (NOT A AND B)
+            if current_conditions and other_conditions:
+                current_clause = f"({' AND '.join(current_conditions)})"
+                other_clause = f"({' AND '.join(other_conditions)})"
+                xor_condition = f"(({current_clause}) AND NOT ({other_clause})) OR (NOT ({current_clause}) AND ({other_clause}))"
+                new_query.custom_filters.append({'condition': xor_condition, 'params': all_params})
+        
+        return new_query
+    
+    def _build_where_conditions(self):
+        """
+        Internal helper method to build WHERE conditions and parameters.
+        Returns tuple of (conditions_list, params_list).
+        """
+        where_conditions = []
+        params = []
+        
+        # Unit filters
+        if self.unit_filters:
+            unit_conditions = []
+            for unit in self.unit_filters:
+                unit_conditions.append("units::text LIKE %s")
+                params.append(f'%{unit}%')
+            
+            if unit_conditions:
+                where_conditions.append(f"({' OR '.join(unit_conditions)})")
+        
+        # Unit count filters
+        if self.unit_count_filters:
+            for filter_data in self.unit_count_filters:
+                where_conditions.append("""
+                    (SELECT COUNT(*) 
+                     FROM jsonb_array_elements(units) AS unit 
+                     WHERE unit->>'character_id' LIKE %s) = %s
+                """)
+                params.extend([f'%{filter_data["unit"]}%', filter_data['count']])
+        
+        # Item on unit filters
+        if self.item_on_unit_filters:
+            for filter_data in self.item_on_unit_filters:
+                where_conditions.append("""
+                    EXISTS (
+                        SELECT 1 FROM jsonb_array_elements(units) AS unit,
+                                     jsonb_array_elements_text(unit->'itemNames') AS item_name
+                        WHERE unit->>'character_id' LIKE %s
+                        AND item_name LIKE %s
+                    )
+                """)
+                params.extend([f'%{filter_data["unit"]}%', f'%{filter_data["item"]}%'])
+        
+        # Last round filters
+        if self.last_round_filters:
+            for round_filter in self.last_round_filters:
+                where_conditions.append("last_round >= %s AND last_round <= %s")
+                params.extend([round_filter['min'], round_filter['max']])
+        
+        # Unit star level filters
+        if self.unit_star_filters:
+            for filter_data in self.unit_star_filters:
+                where_conditions.append("""
+                    EXISTS (
+                        SELECT 1 FROM jsonb_array_elements(units) AS unit
+                        WHERE unit->>'character_id' LIKE %s
+                        AND (unit->>'tier')::INTEGER >= %s
+                        AND (unit->>'tier')::INTEGER <= %s
+                    )
+                """)
+                params.extend([f'%{filter_data["unit"]}%', filter_data['min_star'], filter_data['max_star']])
+        
+        # Unit item count filters
+        if self.unit_item_count_filters:
+            for filter_data in self.unit_item_count_filters:
+                where_conditions.append("""
+                    EXISTS (
+                        SELECT 1 FROM jsonb_array_elements(units) AS unit
+                        WHERE unit->>'character_id' LIKE %s
+                        AND jsonb_array_length(unit->'itemNames') >= %s
+                        AND jsonb_array_length(unit->'itemNames') <= %s
+                    )
+                """)
+                params.extend([f'%{filter_data["unit"]}%', filter_data['min_count'], filter_data['max_count']])
+        
+        # Augment filters
+        if self.augment_filters:
+            augment_conditions = []
+            for augment in self.augment_filters:
+                augment_conditions.append("augments::text LIKE %s")
+                params.append(f'%{augment}%')
+            
+            if augment_conditions:
+                where_conditions.append(f"({' OR '.join(augment_conditions)})")
+        
+        # Patch filters
+        if self.patch_filters:
+            patch_conditions = []
+            for patch in self.patch_filters:
+                patch_conditions.append("m.game_version LIKE %s")
+                params.append(f'%Version {patch}%')
+            
+            if patch_conditions:
+                where_conditions.append(f"({' OR '.join(patch_conditions)})")
+        
+        # Level filters
+        if self.level_filters:
+            for level_filter in self.level_filters:
+                where_conditions.append("level >= %s AND level <= %s")
+                params.extend([level_filter['min'], level_filter['max']])
+        
+        # Trait filters
+        if self.trait_filters:
+            trait_conditions = []
+            for trait in self.trait_filters:
+                trait_conditions.append("traits::text LIKE %s")
+                params.append(f'%{trait["name"]}%')
+            
+            if trait_conditions:
+                where_conditions.append(f"({' OR '.join(trait_conditions)})")
+        
+        # Custom filters
+        if self.custom_filters:
+            for custom_filter in self.custom_filters:
+                where_conditions.append(f"({custom_filter['condition']})")
+                params.extend(custom_filter['params'])
+        
+        return where_conditions, params
