@@ -7,7 +7,7 @@ import streamlit as st
 import pandas as pd
 import os
 import json
-import psycopg2
+import psycopg2No
 from datetime import datetime
 import io
 from pathlib import Path
@@ -239,247 +239,169 @@ def main():
             ref_col1, ref_col2, ref_col3 = st.columns(3)
             
             with ref_col1:
-                st.markdown("#### 🎯 **Units** (Set 14)")
+                st.markdown("#### 🎯 **Units**")
                 st.markdown("""
-                **1-Cost:**
+                - Aatrox
                 - Ahri
-                - Ashe
-                - Blitzcrank
-                - Camille
-                - Corki
-                - Darius
-                - Draven
-                - Elise
-                - Graves
-                - Illaoi
-                - Jax
-                - Karma
-                - Kassadin
-                - Kennen
-                - Lillia
-                - Lux
-                - Mordekaiser
-                - Nomsy
-                - Poppy
-                - Powder
-                - Seraphine
-                - Singed
-                - Soraka
-                - Steb
-                - Tristana
-                - Twitch
-                - Vander
-                - Violet
-                - Warwick
-                - Zoe
-                - Zyra
-                
-                **2-Cost:**
                 - Akali
-                - Ambessa
+                - Ashe
+                - Braum
                 - Caitlyn
-                - Camille
-                - Cassiopeia
                 - Darius
+                - Dr._Mundo
                 - Ekko
+                - Ezreal
+                - Galio
                 - Gangplank
                 - Garen
-                - Hecarim
-                - Heimerdinger
-                - Irelia
-                - Jarvan
-                - Jinx
-                - Katarina
-                - Leblanc
-                - Lux
-                - Malzahar
-                - Nasus
-                - Nocturne
-                - Renata
-                - Rumble
-                - Shen
-                - Swain
-                - TwistedFate
-                - Urgot
-                - Vex
-                - Vladimir
-                - Ziggs
-                
-                **3-Cost:**
-                - Amumu
-                - Ezreal
                 - Gnar
-                - Loris
-                - Mordekaiser
-                - Nami
-                - Neeko
-                - Nunu
-                - Rell
-                - Scar
-                - Smeech
-                - Tristana
-                - Trundle
-                - Vi
-                - Zeri
-                
-                **4-Cost:**
-                - Ambessa
-                - Aphelios
-                - Caitlyn
-                - Elise
-                - Fiora
-                - Garen
-                - Heimerdinger
+                - Gwen
+                - Janna
+                - JarvanIV
                 - Jayce
+                - Jhin
                 - Jinx
+                - K'Sante
+                - Kai'Sa
+                - Kalista
+                - Karma
+                - Katarina
+                - Kayle
+                - Kennen
+                - Kobuko
+                - Kog'Maw
+                - Lee_Sin
                 - Leona
-                - Morgana
-                - Nasus
-                - Renni
-                - Silco
-                - Swain
-                - Vander
-                - Viktor
-                - Vladimir
-                
-                **5-Cost:**
-                - Caitlyn
-                - Ekko
-                - Heimerdinger
-                - Jayce
-                - Jinx
-                - LeBlanc
+                - Lucian
+                - Lux
+                - Malphite
                 - Malzahar
-                - Mel
-                - Rumble
-                - Silco
+                - Naafiri
+                - Neeko
+                - Poppy
+                - Rakan
+                - Rammus
+                - Rell
+                - Ryze
+                - Samira
+                - Senna
+                - Seraphine
+                - Sett
+                - Shen
+                - Sivir
+                - Smolder
                 - Swain
-                - Viktor
-                - Warwick
+                - Syndra
+                - Twisted_Fate
+                - Udyr
+                - Varus
+                - Vi
+                - Viego
+                - Volibear
+                - Xayah
+                - Xin_Zhao
+                - Yasuo
+                - Yone
+                - Yuumi
+                - Zac
+                - Ziggs
+                - Zyra
                 """)
             
             with ref_col2:
                 st.markdown("#### ⚡ **Traits**")
                 st.markdown("""
-                **Origin Traits:**
-                - Zaun
-                - Piltover
-                - Noxus
-                - Demacia
-                - Freljord
-                - Bilgewater
-                - Ixtal
-                - Bandle City
-                - Void
-                
-                **Class Traits:**
-                - Academy
-                - Ambusher
-                - Artillerist
-                - Automata
-                - BlackRose
-                - Bruiser
-                - ChemBaron
-                - Conqueror
-                - Dominator
-                - Enforcer
-                - Experiment
-                - Family
-                - Firelight
-                - FormSwapper
-                - HighRoller
-                - Junker
-                - Pit Fighter
-                - Rebel
-                - Scrap
-                - Sentinel
+                - Bastion
+                - Battle_Academia
+                - Captain
+                - Executioner
+                - Stance_Master
+                - Duelist
+                - Edgelord
+                - The_Champ
+                - Wraith
+                - Crystal_Gambit
+                - Heavyweight
+                - Juggernaut
+                - Luchador
+                - Monster_Trainer
+                - Mentor
+                - Prodigy
+                - Protector
+                - Rosemother
+                - Mighty_Mech
                 - Sniper
-                - Socialite
+                - SoulFighter
                 - Sorcerer
-                - Syndicate
-                - Visionary
-                - Watcher
-                
-                **Unique Traits:**
-                - Anomaly
-                - Chem-Baron
-                - Family
-                - Firelight
-                - Junker-King
-                - PitFighter
-                - Quickstriker
-                - Rebel
-                - WatcherCult
+                - Star_Guardian
+                - Strategist
+                - Supreme_Cells
+                - Crew
                 """)
             
             with ref_col3:
                 st.markdown("#### 🛡️ **Items**")
                 st.markdown("""
-                **AD Items:**
-                - BFSword
-                - InfinityEdge
-                - JeweledGauntlet
-                - LastWhisper
+                - Bastion_Emblem
+                - Battle_Academia_Emblem
+                - Challenger_Emblem
+                - Crystal_Rose_Emblem
+                - Executioner_Emblem
+                - Edgelord_Emblem
+                - Wraith_EmblemItem
+                - Heavyweight_Emblem
+                - Juggernaut_Emblem
+                - Prodigy_Emblem
+                - Protector_Emblem
+                - RingKingsEmblem
+                - ShotcallerEmblem
+                - Sniper_Emblem
+                - Soul_Fighter_Emblem
+                - Sorcerer_Emblem
+                - Star_Guardian_Emblem
+                - Supreme_Cells_Emblem
+                - Mech_Core
+                - Mech_Slicer
+                - Mech_Sword
+                - Death's_Defiance
+                - Infinity_Force
+                - Muramana
+                - Randuin's_Sanctum
+                - Gold_Collector
+                - Zhonya's_Paradox
+                - BF_Sword
                 - Bloodthirster
-                - GuardianAngel
-                - HextechGunblade
-                - RunaansHurricane
-                - DeathBlade
-                - GiantSlayer
-                - StatikkShiv
-                - TitansResolve
-                - EdgeOfNight
-                - CollectorsBrand
-                - RedBuff
-                
-                **AP Items:**
-                - RabadonsDeathcap
-                - ArchangelsStaff
-                - Morellonomicon
-                - VoidStaff
-                - JeweledGauntlet
-                - HextechGunblade
-                - SpearOfShojin
-                - BlueBuff
-                - GunbladeScimitar
-                - ChaliceOfPower
-                - AdaptiveHelm
-                - Crownguard
-                - NashorsTooth
-                
-                **Tank Items:**
-                - Gargoyle
-                - DragonsClaw
-                - ThornMail
-                - WarmogsArmor
-                - FrozenHeart
-                - SunfireCape
-                - AdaptiveHelm
-                - Crownguard
-                - BrambleVest
-                - RedeemerVeil
-                - Protector
-                
-                **Support Items:**
+                - Blue_Buff
+                - Bramble_Vest
+                - Chain_Vest
                 - Chalice
-                - ZephyrBlade
-                - Shroud
-                - LocketOfTheIronSolari
-                - RedemptionVeil
-                - ZzRotPortal
-                - BansheeVeil
-                - QuicksilverSash
-                - SpearOfShojin
-                - TacticiansCrown
-                
-                **Special Items:**
-                - SteraksGage
-                - GuinsoosRageblade
-                - TitanicHydra
-                - BladedArmor
-                - IonicSpark
-                - RunicEcho
-                - HextechSoulstealer
+                - Crownguard
+                - Deathblade
+                - Dragons_Claw
+                - Empty_Bag
+                - Tactician's_Crown
+                - Protector's_Vow
+                - Frying_Pan
+                - Gargoyle_Stoneplate
+                - Giant's_Belt
+                - Edge_Of_Night
+                - Guinsoos_Rageblade
+                - Hextech_Gunblade
+                - Infinity_Edge
+                - Ionic_Spark
+                - Jeweled_Gauntlet
+                - Last_Whisper
+                - Steadfast_Heart
+                - Morellonomicon
+                - Quicksilver
+                - Archangels_Staff
+                - Adaptive_Helm
+                - Runaans_Hurricane
+                - Spear_Of_Shojin
+                - Statikk_Shiv
+                - Steraks_Gage
+                - Titans_Resolve
+                - Warmogs_Armor
                 """)
         
         
