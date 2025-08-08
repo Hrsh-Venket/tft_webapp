@@ -761,13 +761,19 @@ class SimpleTFTQuery:
             current_conditions, current_params = self._build_where_conditions()
             other_conditions, other_params = other_query._build_where_conditions()
             
-            all_params = current_params[:]
-            all_params.extend(other_params)
-            
             # XOR: (A AND NOT B) OR (NOT A AND B)
             if current_conditions and other_conditions:
                 current_clause = f"({' AND '.join(current_conditions)})"
                 other_clause = f"({' AND '.join(other_conditions)})"
+                
+                # We need to duplicate the parameters because each condition appears twice in XOR
+                # XOR formula: (A AND NOT B) OR (NOT A AND B)
+                # This means: A_params, B_params, A_params, B_params
+                all_params = current_params[:]  # For first A
+                all_params.extend(other_params)  # For first B  
+                all_params.extend(current_params)  # For second NOT A
+                all_params.extend(other_params)  # For second B
+                
                 xor_condition = f"(({current_clause}) AND NOT ({other_clause})) OR (NOT ({current_clause}) AND ({other_clause}))"
                 new_query.custom_filters.append({'condition': xor_condition, 'params': all_params})
         

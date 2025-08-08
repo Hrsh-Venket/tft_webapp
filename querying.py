@@ -691,21 +691,40 @@ class DatabaseQueryFilter:
     
     def __xor__(self, other):
         """Combine with XOR logic."""
-        new_params = {**self.params}
-        # Rename conflicting parameter names
+        # For XOR: (A AND NOT B) OR (NOT A AND B)
+        # Each condition appears twice, so we need to create unique parameter names
+        new_params = {}
+        
+        # First occurrence of A condition
+        a1_condition = self.condition
+        for key, value in self.params.items():
+            new_key = f"{key}_a1"
+            new_params[new_key] = value
+            a1_condition = a1_condition.replace(f":{key}", f":{new_key}")
+        
+        # First occurrence of B condition
+        b1_condition = other.condition
         for key, value in other.params.items():
-            if key in new_params:
-                new_key = f"{key}_2"
-                while new_key in new_params:
-                    new_key = f"{new_key}_alt"
-                new_params[new_key] = value
-                other_condition = other.condition.replace(f":{key}", f":{new_key}")
-            else:
-                new_params[key] = value
-                other_condition = other.condition
+            new_key = f"{key}_b1"
+            new_params[new_key] = value
+            b1_condition = b1_condition.replace(f":{key}", f":{new_key}")
+        
+        # Second occurrence of A condition (for NOT A)
+        a2_condition = self.condition
+        for key, value in self.params.items():
+            new_key = f"{key}_a2"
+            new_params[new_key] = value
+            a2_condition = a2_condition.replace(f":{key}", f":{new_key}")
+        
+        # Second occurrence of B condition
+        b2_condition = other.condition
+        for key, value in other.params.items():
+            new_key = f"{key}_b2"
+            new_params[new_key] = value
+            b2_condition = b2_condition.replace(f":{key}", f":{new_key}")
         
         return DatabaseQueryFilter(
-            f"(({self.condition}) AND NOT ({other_condition})) OR (NOT ({self.condition}) AND ({other_condition}))",
+            f"(({a1_condition}) AND NOT ({b1_condition})) OR (NOT ({a2_condition}) AND ({b2_condition}))",
             new_params
         )
     
@@ -1135,31 +1154,57 @@ class TFTQueryDB:
         if hasattr(other_query, '_filters'):
             all_params = {}
             
-            # Get current query conditions
-            current_conditions = []
-            for f in self._filters:
-                current_conditions.append(f.condition)
-                all_params.update(f.params)
+            # For XOR: (A AND NOT B) OR (NOT A AND B)
+            # Each condition appears twice, so we need unique parameters for each occurrence
             
-            # Get other query conditions
-            other_conditions = []
-            for f in other_query._filters:
-                # Rename conflicting parameters
+            # First occurrence - get current query conditions (A)
+            current_conditions_a1 = []
+            for i, f in enumerate(self._filters):
                 renamed_condition = f.condition
                 for key, value in f.params.items():
-                    if key in all_params:
-                        new_key = f"{key}_xor_{id(f)}"
-                        all_params[new_key] = value
-                        renamed_condition = renamed_condition.replace(f":{key}", f":{new_key}")
-                    else:
-                        all_params[key] = value
-                other_conditions.append(renamed_condition)
+                    new_key = f"{key}_a1_{i}"
+                    all_params[new_key] = value
+                    renamed_condition = renamed_condition.replace(f":{key}", f":{new_key}")
+                current_conditions_a1.append(renamed_condition)
+            
+            # First occurrence - get other query conditions (B)
+            other_conditions_b1 = []
+            for i, f in enumerate(other_query._filters):
+                renamed_condition = f.condition
+                for key, value in f.params.items():
+                    new_key = f"{key}_b1_{i}"
+                    all_params[new_key] = value
+                    renamed_condition = renamed_condition.replace(f":{key}", f":{new_key}")
+                other_conditions_b1.append(renamed_condition)
+            
+            # Second occurrence - get current query conditions (for NOT A)
+            current_conditions_a2 = []
+            for i, f in enumerate(self._filters):
+                renamed_condition = f.condition
+                for key, value in f.params.items():
+                    new_key = f"{key}_a2_{i}"
+                    all_params[new_key] = value
+                    renamed_condition = renamed_condition.replace(f":{key}", f":{new_key}")
+                current_conditions_a2.append(renamed_condition)
+            
+            # Second occurrence - get other query conditions (B)
+            other_conditions_b2 = []
+            for i, f in enumerate(other_query._filters):
+                renamed_condition = f.condition
+                for key, value in f.params.items():
+                    new_key = f"{key}_b2_{i}"
+                    all_params[new_key] = value
+                    renamed_condition = renamed_condition.replace(f":{key}", f":{new_key}")
+                other_conditions_b2.append(renamed_condition)
             
             # XOR: (A AND NOT B) OR (NOT A AND B)
-            if current_conditions and other_conditions:
-                current_clause = ' AND '.join(current_conditions)
-                other_clause = ' AND '.join(other_conditions)
-                xor_condition = f"(({current_clause}) AND NOT ({other_clause})) OR (NOT ({current_clause}) AND ({other_clause}))"
+            if current_conditions_a1 and other_conditions_b1:
+                current_clause_a1 = ' AND '.join(current_conditions_a1)
+                other_clause_b1 = ' AND '.join(other_conditions_b1)
+                current_clause_a2 = ' AND '.join(current_conditions_a2)
+                other_clause_b2 = ' AND '.join(other_conditions_b2)
+                
+                xor_condition = f"(({current_clause_a1}) AND NOT ({other_clause_b1})) OR (NOT ({current_clause_a2}) AND ({other_clause_b2}))"
                 new_query._filters.append(DatabaseQueryFilter(xor_condition, all_params))
         
         return new_query
