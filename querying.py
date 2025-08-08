@@ -339,6 +339,85 @@ class TFTQueryLegacy:
         self._filters.append(LogicalFilter(not_filter))
         return self
 
+    def or_(self, *other_queries):
+        """
+        Combine this query with other queries using OR logic.
+        Returns a new TFTQueryLegacy instance with combined filters.
+        
+        Usage: TFTQuery().add_unit('Jinx').or_(TFTQuery().add_unit('Ahri'))
+        """
+        if not other_queries:
+            return self
+        
+        # Create new query instance
+        new_query = TFTQueryLegacy(self.jsonl_filename, self.csv_filename)
+        new_query._sub_cluster_id = self._sub_cluster_id
+        new_query._main_cluster_id = self._main_cluster_id
+        
+        # Combine all query filters using OR logic
+        def combined_or_filter(p, c, m):
+            # Check if current query matches
+            if all(f(p, c, m) for f in self._filters):
+                return True
+            
+            # Check if any other query matches
+            for other_query in other_queries:
+                if all(f(p, c, m) for f in other_query._filters):
+                    return True
+            
+            return False
+        
+        new_query._filters.append(LogicalFilter(combined_or_filter))
+        return new_query
+    
+    def not_(self, other_query=None):
+        """
+        Apply NOT logic to this query or to another query.
+        Returns a new TFTQueryLegacy instance.
+        
+        Usage: 
+        - TFTQuery().not_(TFTQuery().add_unit('Jinx')) = NOT Jinx
+        - TFTQuery().add_trait('SG').not_(TFTQuery().add_unit('Jinx')) = SG AND NOT Jinx
+        """
+        new_query = TFTQueryLegacy(self.jsonl_filename, self.csv_filename)
+        new_query._sub_cluster_id = self._sub_cluster_id
+        new_query._main_cluster_id = self._main_cluster_id
+        
+        if other_query is None:
+            # NOT this query
+            def not_filter(p, c, m):
+                return not all(f(p, c, m) for f in self._filters)
+        else:
+            # This query AND NOT other_query
+            def not_filter(p, c, m):
+                # Current query must match
+                if not all(f(p, c, m) for f in self._filters):
+                    return False
+                # Other query must NOT match
+                return not all(f(p, c, m) for f in other_query._filters)
+        
+        new_query._filters.append(LogicalFilter(not_filter))
+        return new_query
+    
+    def xor(self, other_query):
+        """
+        Combine this query with another query using XOR logic.
+        Returns a new TFTQueryLegacy instance.
+        
+        Usage: TFTQuery().add_unit('Jinx').xor(TFTQuery().add_unit('Ahri'))
+        """
+        new_query = TFTQueryLegacy(self.jsonl_filename, self.csv_filename)
+        new_query._sub_cluster_id = self._sub_cluster_id
+        new_query._main_cluster_id = self._main_cluster_id
+        
+        def xor_filter(p, c, m):
+            self_match = all(f(p, c, m) for f in self._filters)
+            other_match = all(f(p, c, m) for f in other_query._filters)
+            return self_match ^ other_match  # XOR: exactly one should be true
+        
+        new_query._filters.append(LogicalFilter(xor_filter))
+        return new_query
+
     def _combined_filter(self, p, cluster_data, m):
         """Internal method to combine all filters."""
         # Check sub-cluster filter
@@ -902,6 +981,200 @@ class TFTQueryDB:
             return self._add_legacy_filter(lambda p, c, m: not condition(p, c, m))
         
         return self
+
+    def or_(self, *other_queries):
+        """
+        Combine this query with other queries using OR logic.
+        Returns a new TFTQueryDB instance with combined filters.
+        
+        Usage: TFTQuery().add_unit('Jinx').or_(TFTQuery().add_unit('Ahri'))
+        """
+        if not other_queries:
+            return self
+        
+        if not self.use_database:
+            # Delegate to legacy implementation
+            legacy_query = self._convert_to_legacy()
+            legacy_others = [q._convert_to_legacy() if hasattr(q, '_convert_to_legacy') else q for q in other_queries]
+            return legacy_query.or_(*legacy_others)
+        
+        # Create new query instance
+        new_query = TFTQueryDB(use_database=True)
+        new_query._sub_cluster_id = self._sub_cluster_id
+        new_query._main_cluster_id = self._main_cluster_id
+        new_query.jsonl_filename = self.jsonl_filename
+        new_query.csv_filename = self.csv_filename
+        
+        # Combine all filters using OR logic
+        if self._filters or any(q._filters for q in other_queries):
+            # Build combined OR condition
+            all_conditions = []
+            all_params = {}
+            
+            # Add current query conditions
+            if self._filters:
+                current_condition_parts = []
+                for f in self._filters:
+                    current_condition_parts.append(f.condition)
+                    all_params.update(f.params)
+                if current_condition_parts:
+                    all_conditions.append(f"({' AND '.join(current_condition_parts)})")
+            
+            # Add other query conditions
+            for other_query in other_queries:
+                if hasattr(other_query, '_filters') and other_query._filters:
+                    other_condition_parts = []
+                    for f in other_query._filters:
+                        # Rename conflicting parameters
+                        renamed_condition = f.condition
+                        for key, value in f.params.items():
+                            if key in all_params:
+                                new_key = f"{key}_or_{id(f)}"
+                                all_params[new_key] = value
+                                renamed_condition = renamed_condition.replace(f":{key}", f":{new_key}")
+                            else:
+                                all_params[key] = value
+                        other_condition_parts.append(renamed_condition)
+                    if other_condition_parts:
+                        all_conditions.append(f"({' AND '.join(other_condition_parts)})")
+            
+            if all_conditions:
+                combined_condition = ' OR '.join(all_conditions)
+                new_query._filters.append(DatabaseQueryFilter(combined_condition, all_params))
+        
+        return new_query
+    
+    def not_(self, other_query=None):
+        """
+        Apply NOT logic to this query or to another query.
+        Returns a new TFTQueryDB instance.
+        
+        Usage: 
+        - TFTQuery().not_(TFTQuery().add_unit('Jinx')) = NOT Jinx
+        - TFTQuery().add_trait('SG').not_(TFTQuery().add_unit('Jinx')) = SG AND NOT Jinx
+        """
+        if not self.use_database:
+            # Delegate to legacy implementation
+            legacy_query = self._convert_to_legacy()
+            legacy_other = other_query._convert_to_legacy() if other_query and hasattr(other_query, '_convert_to_legacy') else other_query
+            return legacy_query.not_(legacy_other)
+        
+        new_query = TFTQueryDB(use_database=True)
+        new_query._sub_cluster_id = self._sub_cluster_id
+        new_query._main_cluster_id = self._main_cluster_id
+        new_query.jsonl_filename = self.jsonl_filename
+        new_query.csv_filename = self.csv_filename
+        
+        if other_query is None:
+            # NOT this query
+            if self._filters:
+                current_conditions = []
+                all_params = {}
+                for f in self._filters:
+                    current_conditions.append(f.condition)
+                    all_params.update(f.params)
+                combined_condition = f"NOT ({' AND '.join(current_conditions)})"
+                new_query._filters.append(DatabaseQueryFilter(combined_condition, all_params))
+        else:
+            # This query AND NOT other_query
+            all_params = {}
+            
+            # Add current query conditions
+            current_conditions = []
+            for f in self._filters:
+                current_conditions.append(f.condition)
+                all_params.update(f.params)
+            
+            # Add NOT other_query conditions
+            if hasattr(other_query, '_filters') and other_query._filters:
+                other_conditions = []
+                for f in other_query._filters:
+                    # Rename conflicting parameters
+                    renamed_condition = f.condition
+                    for key, value in f.params.items():
+                        if key in all_params:
+                            new_key = f"{key}_not_{id(f)}"
+                            all_params[new_key] = value
+                            renamed_condition = renamed_condition.replace(f":{key}", f":{new_key}")
+                        else:
+                            all_params[key] = value
+                    other_conditions.append(renamed_condition)
+                
+                if current_conditions and other_conditions:
+                    combined_condition = f"({' AND '.join(current_conditions)}) AND NOT ({' AND '.join(other_conditions)})"
+                elif current_conditions:
+                    combined_condition = ' AND '.join(current_conditions)
+                elif other_conditions:
+                    combined_condition = f"NOT ({' AND '.join(other_conditions)})"
+                else:
+                    combined_condition = "1=1"  # Always true if no conditions
+                
+                new_query._filters.append(DatabaseQueryFilter(combined_condition, all_params))
+        
+        return new_query
+    
+    def xor(self, other_query):
+        """
+        Combine this query with another query using XOR logic.
+        Returns a new TFTQueryDB instance.
+        
+        Usage: TFTQuery().add_unit('Jinx').xor(TFTQuery().add_unit('Ahri'))
+        """
+        if not self.use_database:
+            # Delegate to legacy implementation
+            legacy_query = self._convert_to_legacy()
+            legacy_other = other_query._convert_to_legacy() if hasattr(other_query, '_convert_to_legacy') else other_query
+            return legacy_query.xor(legacy_other)
+        
+        new_query = TFTQueryDB(use_database=True)
+        new_query._sub_cluster_id = self._sub_cluster_id
+        new_query._main_cluster_id = self._main_cluster_id
+        new_query.jsonl_filename = self.jsonl_filename
+        new_query.csv_filename = self.csv_filename
+        
+        if hasattr(other_query, '_filters'):
+            all_params = {}
+            
+            # Get current query conditions
+            current_conditions = []
+            for f in self._filters:
+                current_conditions.append(f.condition)
+                all_params.update(f.params)
+            
+            # Get other query conditions
+            other_conditions = []
+            for f in other_query._filters:
+                # Rename conflicting parameters
+                renamed_condition = f.condition
+                for key, value in f.params.items():
+                    if key in all_params:
+                        new_key = f"{key}_xor_{id(f)}"
+                        all_params[new_key] = value
+                        renamed_condition = renamed_condition.replace(f":{key}", f":{new_key}")
+                    else:
+                        all_params[key] = value
+                other_conditions.append(renamed_condition)
+            
+            # XOR: (A AND NOT B) OR (NOT A AND B)
+            if current_conditions and other_conditions:
+                current_clause = ' AND '.join(current_conditions)
+                other_clause = ' AND '.join(other_conditions)
+                xor_condition = f"(({current_clause}) AND NOT ({other_clause})) OR (NOT ({current_clause}) AND ({other_clause}))"
+                new_query._filters.append(DatabaseQueryFilter(xor_condition, all_params))
+        
+        return new_query
+
+    def _convert_to_legacy(self):
+        """Convert to TFTQueryLegacy for fallback operations."""
+        legacy_query = TFTQueryLegacy(self.jsonl_filename, self.csv_filename)
+        if self._sub_cluster_id is not None:
+            legacy_query.set_sub_cluster(self._sub_cluster_id)
+        if self._main_cluster_id is not None:
+            legacy_query.set_main_cluster(self._main_cluster_id)
+        
+        # Note: Complex filters would need custom conversion logic
+        # For now, this is a basic fallback structure
+        return legacy_query
     
     def _add_legacy_filter(self, filter_func: Callable):
         """Add a legacy Python filter function (for backward compatibility)."""
