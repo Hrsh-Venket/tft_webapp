@@ -13,15 +13,5 @@
       "src": "/(.*)",
       "dest": "/index.html"
     }
-  ],
-  "builds": [
-    {
-      "src": "api/index.py",
-      "use": "@vercel/python"
-    },
-    {
-      "src": "index.html",
-      "use": "@vercel/static"
-    }
   ]
 }
