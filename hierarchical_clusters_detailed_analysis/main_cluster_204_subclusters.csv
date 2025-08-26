@@ -1,8 +1,0 @@
-sub_cluster_id,size,top_8_units,avg_place,winrate,top4_rate
-576,5,"Carry_g3star_Gangplank, Udyr, Carry_s3star_Viego, Carry_Ashe, Carry_Sett, Carry_Lee_Sin, Kai'Sa, JarvanIV",2.40,20.0%,100.0%
-2039,12,"Carry_s3star_Gangplank, Carry_s3star_Udyr, Carry_g3star_Viego, Sett, Carry_Lee_Sin, Ashe, Kai'Sa, Kayle",3.25,25.0%,75.0%
-710,5,"Carry_g3star_Gangplank, Udyr, Carry_s3star_Viego, Carry_Yone, Sett, Lee_Sin, Galio, Ashe",3.40,20.0%,80.0%
-789,8,"Carry_s3star_Gangplank, Udyr, Carry_s3star_Viego, Carry_Lee_Sin, Ashe, Kai'Sa, Sett, Kayle",4.00,12.5%,62.5%
-1154,5,"Kai'Sa, Carry_g3star_Gangplank, Carry_s3star_Udyr, Carry_g3star_Viego, Carry_Yone, Lee_Sin, Galio, Ashe",4.00,0.0%,80.0%
-1519,10,"Carry_Kayle, Carry_s3star_Gangplank, Udyr, Carry_s3star_Viego, Sett, Kai'Sa, Ashe, Lee_Sin",5.80,0.0%,30.0%
-498,54,"Carry_s3star_Gangplank, Udyr, Carry_Viego, Kai'Sa, Ashe, Kayle, Sett, Lee_Sin",6.83,1.9%,7.4%

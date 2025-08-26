@@ -1,9 +1,0 @@
-sub_cluster_id,size,top_8_units,avg_place,winrate,top4_rate
-1639,5,"Carry_s3star_Kai'Sa, Carry_g3star_Gangplank, Carry_Udyr, Carry_Akali, Kayle, Viego, Ashe, Sett",3.00,20.0%,80.0%
-1418,5,"Carry_s3star_Kai'Sa, Carry_Kobuko, Carry_s3star_Darius, Carry_Udyr, Yasuo, Carry_Akali, Ryze, Kennen",3.40,20.0%,60.0%
-1442,5,"Carry_Kai'Sa, Carry_Kobuko, Carry_g3star_Darius, Carry_Udyr, Carry_Yasuo, Carry_Akali, Carry_Ryze, Kennen",4.20,0.0%,60.0%
-467,98,"Carry_s3star_Kai'Sa, Carry_s3star_Darius, Carry_Udyr, Carry_Akali, Kobuko, Yasuo, Ryze, Kennen",4.33,8.2%,57.1%
-1134,6,"Carry_s3star_Kai'Sa, Carry_Udyr, Viego, Carry_Akali, Carry_Ashe, Gangplank, Darius, Kennen",5.17,0.0%,50.0%
-1964,12,"Carry_s3star_Kai'Sa, Carry_Udyr, Carry_Akali, Darius, Kennen, Kobuko, Yasuo, Ryze",5.75,8.3%,33.3%
-761,10,"Carry_s3star_Kai'Sa, Carry_Akali, Kennen, Darius, Udyr, Ryze, Janna, Kobuko",5.90,0.0%,20.0%
-245,67,"Carry_s3star_Kai'Sa, Carry_s3star_Darius, Carry_Akali, Kobuko, Udyr, Kennen, Yasuo, Ryze",6.06,0.0%,14.9%

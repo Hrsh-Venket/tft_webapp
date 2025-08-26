@@ -1,6 +1,0 @@
-sub_cluster_id,size,top_8_units,avg_place,winrate,top4_rate
-1793,9,"Carry_g3star_Sivir, Carry_g3star_Malphite, g3star_Shen, Carry_s3star_Janna, Carry_g3star_Ziggs, Carry_Twisted_Fate, JarvanIV, Ryze",2.44,55.6%,77.8%
-2157,6,"Carry_g3star_Sivir, Carry_s3star_Malphite, g3star_Shen, Carry_g3star_Janna, Carry_JarvanIV, Ziggs, Ryze, Twisted_Fate",4.33,0.0%,66.7%
-53,38,"Carry_g3star_Sivir, Carry_g3star_Malphite, s3star_Shen, Carry_s3star_Janna, Carry_g3star_Ziggs, JarvanIV, Ryze, Twisted_Fate",4.95,7.9%,44.7%
-543,35,"Carry_s3star_Sivir, Carry_s3star_Malphite, Carry_s3star_Janna, s3star_Shen, Ziggs, JarvanIV, Ryze, Twisted_Fate",6.49,2.9%,14.3%
-2237,6,"Carry_s3star_Malphite, Carry_s3star_Janna, Ziggs, s3star_Sivir, s3star_Shen, Ryze, JarvanIV, K'Sante",7.67,0.0%,0.0%

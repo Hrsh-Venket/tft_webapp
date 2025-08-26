@@ -1,6 +1,0 @@
-sub_cluster_id,size,top_8_units,avg_place,winrate,top4_rate
-2271,15,"Gangplank, Udyr, Viego, Carry_Ashe, Carry_JarvanIV, Carry_Lee_Sin, Carry_Yone, Galio",3.40,20.0%,80.0%
-2276,5,"Gangplank, Udyr, Carry_Viego, Carry_Ashe, Carry_JarvanIV, Carry_Yone, Galio, Kai'Sa",5.60,0.0%,20.0%
-1143,9,"Carry_Ashe, Carry_JarvanIV, Carry_Yone, Udyr, Galio, Kai'Sa, Gangplank, Viego",6.44,0.0%,0.0%
-941,10,"Carry_Swain, Carry_Ashe, Carry_Yone, Vi, Janna, Syndra, Udyr, Zyra",7.70,0.0%,0.0%
-1522,6,"Carry_Ashe, Carry_Yone, Swain, Vi, Janna, Syndra, Braum, Aatrox",7.83,0.0%,0.0%

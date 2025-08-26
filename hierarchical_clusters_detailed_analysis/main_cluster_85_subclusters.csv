@@ -1,9 +1,0 @@
-sub_cluster_id,size,top_8_units,avg_place,winrate,top4_rate
-765,10,"Janna, Carry_Swain, Carry_Ashe, Carry_JarvanIV, Carry_Braum, Carry_Gwen, Carry_Zyra, Vi",1.20,80.0%,100.0%
-2233,5,"Lucian, Carry_Swain, Ryze, Carry_Karma, Carry_JarvanIV, Carry_Gwen, Carry_Twisted_Fate, Galio",1.20,80.0%,100.0%
-1996,11,"Carry_Lucian, Carry_Swain, Carry_Karma, Carry_JarvanIV, Carry_Gwen, Galio, Lux, Ryze",3.18,27.3%,72.7%
-2134,5,"Carry_s3star_Lucian, Lux, Carry_Swain, Karma, Carry_JarvanIV, Carry_Gwen, Galio, Ahri",3.80,20.0%,60.0%
-1810,7,"Lucian, Carry_s3star_Ahri, Carry_Swain, Karma, Carry_JarvanIV, Carry_Gwen, Galio, Lux",4.29,14.3%,28.6%
-1944,5,"Carry_Swain, Carry_JarvanIV, Carry_Gwen, Karma, Lucian, Lux, Kennen, Galio",5.80,0.0%,20.0%
-2218,5,"Carry_Lucian, Lux, Carry_Swain, Carry_Gwen, JarvanIV, Galio, Ahri, Ryze",6.40,0.0%,20.0%
-2111,10,"Carry_Swain, Carry_Gwen, Ahri, Vi, Lucian, Janna, JarvanIV, Syndra",6.90,0.0%,10.0%
