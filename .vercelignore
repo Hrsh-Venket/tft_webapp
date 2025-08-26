@@ -1,0 +1,65 @@
+# Large data files
+*.jsonl
+*.csv
+hierarchical_clusters_detailed_analysis/
+global_matches_downloaded.json
+
+# Development files
+test_*.py
+*_test.py
+streamlit_logs.txt
+database_setup.log
+
+# Documentation (not needed for runtime)
+deployment/
+documentation/
+README*.md
+*.md
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+*.so
+
+# Environment files
+.env
+.env.local
+.env.production
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Temporary files
+*.tmp
+*.temp
+
+# Legacy Streamlit files (not needed for HTMX version)
+streamlit_app.py
+streamlit_secrets.py
+app.py
+
+# Database utilities not needed for API
+setup_database.py
+init_supabase.py
+simple_init.py
+import_data.py
+upload_*.py
+data_collection.py
+filter_*.py
+generate_name_mappings.py
+clustering.py
+data_upload_tab.py
+
+# Test files
+test_*.py
+example_usage.py

@@ -17,6 +17,9 @@ app = Flask(__name__)
 
 # Import TFT query system
 try:
+    import sys
+    import os
+    sys.path.append(os.path.dirname(os.path.dirname(__file__)))
     from simple_database import SimpleTFTQuery as TFTQuery, test_connection, get_match_stats
     DATABASE_AVAILABLE = True
 except ImportError as e:
