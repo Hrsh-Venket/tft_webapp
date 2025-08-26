@@ -1,13 +1,13 @@
 {
   "functions": {
-    "api/index.py": {
+    "api/minimal.py": {
       "runtime": "@vercel/python@4.3.0"
     }
   },
   "routes": [
     {
       "src": "/api/(.*)",
-      "dest": "/api/index.py"
+      "dest": "/api/minimal.py"
     },
     {
       "src": "/(.*)",
