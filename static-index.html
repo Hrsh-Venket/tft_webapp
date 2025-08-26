@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TFT Composition Analysis</title>
+    <script src="https://unpkg.com/htmx.org@1.9.10"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⚔️</text></svg>">
+</head>
+<body class="bg-gray-100">
+    <div class="container mx-auto px-4 py-8">
+        <h1 class="text-3xl font-bold text-center mb-8 flex items-center justify-center gap-2">
+            <span>⚔️</span>
+            TFT Composition Analysis
+        </h1>
+        
+        <!-- Tab Navigation -->
+        <div class="border-b border-gray-200 mb-6">
+            <nav class="-mb-px flex space-x-8">
+                <button id="overview-tab" class="tab-button active py-2 px-1 border-b-2 border-blue-500 text-blue-600 font-medium" onclick="showTab('overview')">
+                    📊 Overview
+                </button>
+                <button id="clusters-tab" class="tab-button py-2 px-1 border-b-2 border-transparent text-gray-500 hover:text-gray-700" onclick="showTab('clusters')">
+                    🎯 Clusters
+                </button>
+                <button id="query-tab" class="tab-button py-2 px-1 border-b-2 border-transparent text-gray-500 hover:text-gray-700" onclick="showTab('query')">
+                    🔍 Query
+                </button>
+                <button id="upload-tab" class="tab-button py-2 px-1 border-b-2 border-transparent text-gray-500 hover:text-gray-700" onclick="showTab('upload')">
+                    📤 Upload
+                </button>
+            </nav>
+        </div>
+
+        <!-- Tab Content -->
+        <div id="tab-content">
+            <!-- Overview Tab -->
+            <div id="overview-content" class="tab-content">
+                <h2 class="text-2xl font-semibold mb-6">Dataset Overview</h2>
+                
+                <!-- Database Status -->
+                <div class="mb-6 bg-yellow-50 border border-yellow-200 rounded-lg p-4">
+                    <h3 class="text-sm font-medium text-yellow-800">Demo Mode</h3>
+                    <p class="text-sm text-yellow-700">This is a static demo using mock data.</p>
+                </div>
+
+                <!-- Statistics Cards -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div class="bg-white p-6 rounded-lg shadow">
+                        <h3 class="text-lg font-medium mb-2">Total Matches</h3>
+                        <p class="text-3xl font-bold text-blue-600">12,500</p>
+                        <p class="text-sm text-gray-500">Demo data</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-lg shadow">
+                        <h3 class="text-lg font-medium mb-2">Total Participants</h3>
+                        <p class="text-3xl font-bold text-green-600">100,000</p>
+                        <p class="text-sm text-gray-500">Demo data</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-lg shadow">
+                        <h3 class="text-lg font-medium mb-2">Avg Players/Match</h3>
+                        <p class="text-3xl font-bold text-purple-600">8.0</p>
+                        <p class="text-sm text-gray-500">Demo data</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Other tabs with static demo content -->
+            <div id="clusters-content" class="tab-content hidden">
+                <h2 class="text-2xl font-semibold mb-6">Cluster Analysis</h2>
+                <div class="bg-blue-50 border border-blue-200 rounded-lg p-4">
+                    <p class="text-blue-800">📊 Static demo - cluster analysis would be dynamic with backend API</p>
+                </div>
+            </div>
+
+            <div id="query-content" class="tab-content hidden">
+                <h2 class="text-2xl font-semibold mb-6">TFT Query Interface</h2>
+                <div class="bg-blue-50 border border-blue-200 rounded-lg p-4">
+                    <p class="text-blue-800">🔍 Static demo - query functionality would be dynamic with backend API</p>
+                </div>
+            </div>
+
+            <div id="upload-content" class="tab-content hidden">
+                <h2 class="text-2xl font-semibold mb-6">Data Upload</h2>
+                <div class="bg-blue-50 border border-blue-200 rounded-lg p-4">
+                    <p class="text-blue-800">📤 Static demo - upload functionality would be dynamic with backend API</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function showTab(tabName) {
+            document.querySelectorAll('.tab-content').forEach(content => {
+                content.classList.add('hidden');
+            });
+            
+            document.querySelectorAll('.tab-button').forEach(button => {
+                button.classList.remove('active', 'border-blue-500', 'text-blue-600');
+                button.classList.add('border-transparent', 'text-gray-500');
+            });
+            
+            document.getElementById(tabName + '-content').classList.remove('hidden');
+            
+            const activeTab = document.getElementById(tabName + '-tab');
+            activeTab.classList.add('active', 'border-blue-500', 'text-blue-600');
+            activeTab.classList.remove('border-transparent', 'text-gray-500');
+        }
+    </script>
+</body>
+</html>

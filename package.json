@@ -1,0 +1,32 @@
+{
+  "name": "tft-webapp-api",
+  "version": "1.0.0",
+  "description": "Pure Node.js backend API for TFT Composition Analysis webapp with HTMX frontend support",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js",
+    "test": "node test-api.js",
+    "demo": "node demo.js",
+    "test-load": "node -e \"console.log('✅ Server loads successfully'); require('./server.js');\""
+  },
+  "keywords": [
+    "tft",
+    "teamfight-tactics",
+    "nodejs",
+    "htmx",
+    "api",
+    "zero-dependencies"
+  ],
+  "author": "TFT Webapp Team",
+  "license": "MIT",
+  "engines": {
+    "node": ">=14.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "."
+  },
+  "dependencies": {},
+  "devDependencies": {}
+}
