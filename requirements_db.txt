@@ -1,0 +1,286 @@
+# TFT Match Analysis - Database Requirements
+# Additional database-related dependencies
+
+# ============================================================================
+# DATABASE DRIVERS AND CONNECTIVITY
+# ============================================================================
+
+# PostgreSQL driver (sync)
+psycopg2-binary>=2.9.9
+
+# Async PostgreSQL driver
+asyncpg>=0.29.0
+
+# SQLAlchemy ORM
+sqlalchemy>=2.0.23
+sqlalchemy[asyncio]>=2.0.23
+
+# Connection pooling
+sqlalchemy-pool>=1.0.0
+
+# ============================================================================
+# DATABASE UTILITIES
+# ============================================================================
+
+# Database migrations and schema management
+alembic>=1.13.1
+
+# Database connection testing
+sqlalchemy-utils>=0.41.1
+
+# PostgreSQL-specific utilities
+psycopg2-pool>=1.1
+
+# ============================================================================
+# SUPABASE INTEGRATION
+# ============================================================================
+
+# Supabase client (if using Supabase)
+supabase>=2.3.0
+
+# PostgREST client
+postgrest>=0.16.0
+
+# ============================================================================
+# DATA PROCESSING AND ANALYSIS
+# ============================================================================
+
+# Data manipulation
+pandas>=2.1.1
+numpy>=1.24.3
+
+# JSON processing
+ijson>=3.2.3
+
+# UUID generation and handling
+uuid>=1.30
+
+# Date and time handling
+python-dateutil>=2.8.2
+
+# ============================================================================
+# ENVIRONMENT AND CONFIGURATION
+# ============================================================================
+
+# Environment variable management
+python-dotenv>=1.0.0
+
+# Configuration validation
+pydantic>=2.5.0
+pydantic-settings>=2.1.0
+
+# YAML configuration support
+PyYAML>=6.0.1
+
+# ============================================================================
+# LOGGING AND MONITORING
+# ============================================================================
+
+# Structured logging
+structlog>=23.2.0
+
+# Database query logging
+sqlalchemy-logging>=1.0.0
+
+# Performance monitoring
+py-spy>=0.3.14
+
+# ============================================================================
+# REDIS CACHING (OPTIONAL)
+# ============================================================================
+
+# Redis client
+redis>=5.0.1
+
+# Redis connection pooling
+redis-py-cluster>=2.1.3
+
+# Cache backends
+cachetools>=5.3.2
+
+# ============================================================================
+# DATA VALIDATION
+# ============================================================================
+
+# Data validation
+cerberus>=1.3.5
+
+# Schema validation
+jsonschema>=4.20.0
+
+# ============================================================================
+# DEVELOPMENT AND TESTING
+# ============================================================================
+
+# Testing framework
+pytest>=7.4.3
+pytest-asyncio>=0.21.1
+pytest-postgresql>=5.0.0
+
+# Database testing utilities
+pytest-mock>=3.12.0
+factory-boy>=3.3.0
+
+# Test data generation
+faker>=20.1.0
+
+# ============================================================================
+# PERFORMANCE AND OPTIMIZATION
+# ============================================================================
+
+# Connection pool monitoring
+sqlalchemy-pool-logging>=1.0.0
+
+# Query optimization
+sqlparse>=0.4.4
+
+# Memory profiling
+memory-profiler>=0.61.0
+
+# ============================================================================
+# SECURITY
+# ============================================================================
+
+# Password hashing
+passlib>=1.7.4
+bcrypt>=4.1.2
+
+# Secure random generation
+secrets>=1.0.0
+
+# ============================================================================
+# SERIALIZATION
+# ============================================================================
+
+# Fast JSON serialization
+orjson>=3.9.10
+
+# MessagePack serialization (for caching)
+msgpack>=1.0.7
+
+# ============================================================================
+# TIME SERIES AND ANALYTICS
+# ============================================================================
+
+# Time series analysis
+pytz>=2023.3
+arrow>=1.3.0
+
+# Statistical analysis
+scipy>=1.11.4
+scikit-learn>=1.3.2
+
+# ============================================================================
+# NETWORKING AND HTTP
+# ============================================================================
+
+# HTTP client for API calls
+httpx>=0.25.2
+requests>=2.31.0
+
+# Async HTTP client
+aiohttp>=3.9.1
+
+# ============================================================================
+# GEVENT (FOR HEROKU)
+# ============================================================================
+
+# Gevent for better concurrency on Heroku
+gevent>=23.9.1
+
+# Gevent PostgreSQL adapter
+psycogreen>=1.0.2
+
+# ============================================================================
+# COMMAND LINE INTERFACE
+# ============================================================================
+
+# CLI framework
+click>=8.1.7
+
+# Progress bars
+tqdm>=4.66.1
+
+# Rich text and formatting
+rich>=13.7.0
+
+# ============================================================================
+# DATA EXPORT
+# ============================================================================
+
+# Excel export
+openpyxl>=3.1.2
+
+# CSV handling
+csv-diff>=1.0.0
+
+# ============================================================================
+# HEROKU DEPLOYMENT
+# ============================================================================
+
+# WSGI server for Heroku
+gunicorn>=21.2.0
+
+# Heroku runtime
+dj-database-url>=2.1.0
+
+# ============================================================================
+# VERSION PINNING NOTES
+# ============================================================================
+
+# Note: Some packages are pinned to specific versions for compatibility
+# Update versions carefully and test thoroughly before deployment
+
+# Python version requirement: >=3.9
+# Tested with Python 3.9, 3.10, 3.11
+
+# For production deployment, consider using:
+# pip-tools to generate exact version pins
+# pip freeze > requirements-exact.txt
+
+# ============================================================================
+# INSTALLATION NOTES
+# ============================================================================
+
+# To install all database dependencies:
+# pip install -r requirements_db.txt
+
+# For development (includes testing tools):
+# pip install -r requirements_db.txt
+
+# For production (minimal set):
+# pip install psycopg2-binary sqlalchemy asyncpg python-dotenv pandas
+
+# On some systems, you may need to install system dependencies first:
+# Ubuntu/Debian: apt-get install libpq-dev python3-dev
+# CentOS/RHEL: yum install postgresql-devel python3-devel
+# macOS: brew install postgresql
+
+# ============================================================================
+# DOCKER CONSIDERATIONS
+# ============================================================================
+
+# For Docker builds, consider using psycopg2-binary instead of psycopg2
+# to avoid compilation issues
+
+# For Alpine Linux containers, you may need:
+# RUN apk add --no-cache postgresql-dev gcc musl-dev
+
+# ============================================================================
+# PERFORMANCE NOTES
+# ============================================================================
+
+# For high-performance applications, consider:
+# - Using asyncpg for async operations
+# - Implementing connection pooling with PgBouncer
+# - Using SQLAlchemy's compiled queries
+# - Caching frequently accessed data with Redis
+
+# ============================================================================
+# SECURITY CONSIDERATIONS
+# ============================================================================
+
+# Always use the latest stable versions for security patches
+# Regularly audit dependencies for vulnerabilities
+# Use virtual environments to isolate dependencies
+# Consider using pipenv or poetry for dependency management

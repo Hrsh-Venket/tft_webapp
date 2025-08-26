@@ -1,0 +1,123 @@
+{
+  "name": "TFT Match Analysis Webapp",
+  "description": "A comprehensive Teamfight Tactics match analysis application with clustering and composition insights",
+  "repository": "https://github.com/yourusername/tft_webapp",
+  "logo": "https://raw.githubusercontent.com/yourusername/tft_webapp/main/assets/logo.png",
+  "keywords": [
+    "tft", 
+    "teamfight-tactics", 
+    "data-analysis", 
+    "machine-learning", 
+    "clustering", 
+    "streamlit", 
+    "postgresql", 
+    "supabase"
+  ],
+  "website": "https://your-app-name.herokuapp.com",
+  "stack": "heroku-22",
+  "buildpacks": [
+    {
+      "url": "heroku/python"
+    }
+  ],
+  "formation": {
+    "web": {
+      "quantity": 1,
+      "size": "basic"
+    }
+  },
+  "addons": [
+    {
+      "plan": "heroku-postgresql:essential-0",
+      "as": "DATABASE"
+    }
+  ],
+  "env": {
+    "ENVIRONMENT": {
+      "description": "Application environment (production/staging)",
+      "value": "production",
+      "required": true
+    },
+    "DEBUG": {
+      "description": "Enable debug mode (false for production)",
+      "value": "false",
+      "required": true
+    },
+    "STREAMLIT_THEME_BASE": {
+      "description": "Streamlit theme base color",
+      "value": "dark",
+      "required": false
+    },
+    "STREAMLIT_THEME_PRIMARY_COLOR": {
+      "description": "Primary color for Streamlit UI",
+      "value": "#FF6B6B",
+      "required": false
+    },
+    "SUPABASE_URL": {
+      "description": "Supabase project URL (if using Supabase instead of Heroku Postgres)",
+      "required": false
+    },
+    "SUPABASE_ANON_KEY": {
+      "description": "Supabase anonymous key",
+      "required": false
+    },
+    "SUPABASE_DB_HOST": {
+      "description": "Supabase database host",
+      "required": false
+    },
+    "SUPABASE_DB_PASSWORD": {
+      "description": "Supabase database password",
+      "required": false
+    },
+    "DB_POOL_SIZE": {
+      "description": "Database connection pool size",
+      "value": "10",
+      "required": false
+    },
+    "DB_MAX_OVERFLOW": {
+      "description": "Maximum connection pool overflow",
+      "value": "20",
+      "required": false
+    },
+    "DB_STATEMENT_TIMEOUT": {
+      "description": "Database statement timeout in milliseconds",
+      "value": "300000",
+      "required": false
+    },
+    "TFT_API_KEY": {
+      "description": "Riot Games TFT API key (for data collection)",
+      "required": false
+    },
+    "SENTRY_DSN": {
+      "description": "Sentry DSN for error tracking (optional)",
+      "required": false
+    }
+  },
+  "scripts": {
+    "postdeploy": "python deployment/migrate_to_production.py --initial-setup"
+  },
+  "environments": {
+    "test": {
+      "addons": [
+        "heroku-postgresql:essential-0"
+      ],
+      "env": {
+        "ENVIRONMENT": "testing",
+        "DEBUG": "true"
+      }
+    },
+    "staging": {
+      "addons": [
+        "heroku-postgresql:essential-0"
+      ],
+      "env": {
+        "ENVIRONMENT": "staging",
+        "DEBUG": "false"
+      }
+    }
+  },
+  "success_url": "/",
+  "features": [
+    "runtime-dyno-metadata"
+  ]
+}

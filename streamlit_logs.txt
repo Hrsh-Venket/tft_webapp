@@ -1,0 +1,181 @@
+[     UTC     ] Logs for tftwebapp-byxva2vmvnnshun6yquxkb.streamlit.app/
+
+────────────────────────────────────────────────────────────────────────────────────────
+
+[14:17:38] 🖥 Provisioning machine...
+
+[14:17:38] 🎛 Preparing system...
+
+[14:17:38] ⛓ Spinning up manager process...
+
+[14:17:34] 🚀 Starting up repository: 'tft_webapp', branch: 'main', main module: 'streamlit_app.py'
+
+[14:17:34] 🐙 Cloning repository...
+
+[14:17:36] 🐙 Cloning into '/mount/src/tft_webapp'...
+Warning: Permanently added the ED25519 host key for IP address '140.82.116.3' to the list of known hosts.
+
+[14:17:36] 🐙 Cloned repository!
+
+[14:17:36] 🐙 Pulling code changes from Github...
+
+[14:17:37] 📦 Processing dependencies...
+
+
+──────────────────────────────────────── uv ───────────────────────────────────────────
+
+
+Using uv pip install.
+
+Using Python 3.13.5 environment at /home/adminuser/venv
+
+Resolved 45 packages in 560ms
+
+Prepared 45 packages in 2.58s
+
+Installed 45 packages in 254ms
+
+ + altair==5.5.0
+
+ + attrs==25.3.0
+
+ + blinker==1.9.0
+
+ + cachetools==6.1.0
+
+ + certifi==2025.8.3
+
+ + charset-normalizer==3.4.2
+
+ + click==8.2.1
+
+ + gitdb==4.0.12
+
+ + gitpython==3.1.45
+
+ + greenlet==[2025-08-07 14:17:40.988919] 3.2.4
+
+ + idna==3.10
+
+ + jinja2==3.1.6
+
+ + joblib==1.5.1
+
+ +[2025-08-07 14:17:40.989143]  jsonschema==4.25.0
+
+ + jsonschema-specifications==2025.4.1
+
+ + markupsafe==3.0.2
+
+ + narwhals==2.0.1
+
+ + numpy==2.3.2
+
+ + packaging==25.0
+
+ + pandas==2.3.1
+
+ + pillow==11.3.0
+
+ + protobuf==6.31.1
+
+ + psycopg2-binary==2.9.10
+
+ + pyarrow==21.0.0
+
+ + pydeck==0.9.1
+
+ + python-dateutil==2.9.0.post0
+
+ + python-dotenv==1.1.1
+
+ + pytz==2025.2
+
+ + referencing==0.36.2
+
+ + requests==2.32.4
+
+ + rpds-py==0.27.0
+
+ + scikit-learn==1.7.1
+
+Checking if Streamlit is installed
+
+Found Streamlit version 1.48.0 in the environment
+
+Installing rich for an improved exception logging
+
+Using uv pip install.
+
+Using Python 3.13.5 environment at /home/adminuser/venv
+
+Resolved 4 packages in 130ms
+
+Prepared 4 packages in 137ms
+
+Installed 4 packages in 15ms
+
+ [2025-08-07 14:17:42.440382] + markdown-it-py==3.0.0
+
+ + mdurl==0.1.2
+
+ + pygments==2.19.2
+
+ + rich==14.1.0
+
+
+────────────────────────────────────────────────────────────────────────────────────────
+
+
+[14:17:42] 🐍 Python dependencies were installed from /mount/src/tft_webapp/requirements.txt using uv.
+
+Check if streamlit is installed
+
+Streamlit is already installed
+
+[14:17:44] 📦 Processed dependencies!
+
+
+
+
+Query failed with postgresql://postgres.gnyvkxdwlcojkgsarksr:TFT_webapp123@aws-0-ap-southeast-1.pooler.supabase.com:5432/postgres: there is no parameter $1
+
+LINE 8:             WHERE (units::text LIKE $1)
+
+                                            ^
+
+
+Query failed with postgresql://postgres:TFT_webapp123@db.gnyvkxdwlcojkgsarksr.supabase.co:5432/postgres: connection to server at "db.gnyvkxdwlcojkgsarksr.supabase.co" (2406:da18:243:740d:2651:cfbd:3d7b:c333), port 5432 failed: Cannot assign requested address
+
+	Is the server running on that host and accepting TCP/IP connections?
+
+
+Query failed: All connection attempts failed
+
+Query failed with postgresql://postgres.gnyvkxdwlcojkgsarksr:TFT_webapp123@aws-0-ap-southeast-1.pooler.supabase.com:5432/postgres: there is no parameter $1
+
+LINE 8:             WHERE (units::text LIKE $1)
+
+                                            ^
+
+
+Query failed with postgresql://postgres:TFT_webapp123@db.gnyvkxdwlcojkgsarksr.supabase.co:5432/postgres: connection to server at "db.gnyvkxdwlcojkgsarksr.supabase.co" (2406:da18:243:740d:2651:cfbd:3d7b:c333), port 5432 failed: Cannot assign requested address
+
+	Is the server running on that host and accepting TCP/IP connections?
+
+
+Query failed: All connection attempts failed
+
+Query failed with postgresql://postgres.gnyvkxdwlcojkgsarksr:TFT_webapp123@aws-0-ap-southeast-1.pooler.supabase.com:5432/postgres: there is no parameter $1
+
+LINE 8:             WHERE (units::text LIKE $1)
+
+                                            ^
+
+
+Query failed with postgresql://postgres:TFT_webapp123@db.gnyvkxdwlcojkgsarksr.supabase.co:5432/postgres: connection to server at "db.gnyvkxdwlcojkgsarksr.supabase.co" (2406:da18:243:740d:2651:cfbd:3d7b:c333), port 5432 failed: Cannot assign requested address
+
+	Is the server running on that host and accepting TCP/IP connections?
+
+
+Query failed: All connection attempts failed

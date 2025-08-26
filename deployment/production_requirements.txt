@@ -1,0 +1,194 @@
+# TFT Webapp - Production Requirements
+# Optimized for Heroku + Supabase deployment
+# Last updated: 2025-08-06
+
+# ============================================================================
+# CORE APPLICATION DEPENDENCIES
+# ============================================================================
+
+# Streamlit web framework
+streamlit==1.28.1
+
+# Data manipulation and analysis
+pandas==2.1.1
+numpy==1.24.3
+
+# ============================================================================
+# DATABASE CONNECTIVITY
+# ============================================================================
+
+# PostgreSQL drivers
+psycopg2-binary==2.9.9
+asyncpg==0.29.0
+
+# SQLAlchemy ORM with async support
+sqlalchemy[asyncio]==2.0.23
+
+# Supabase client
+supabase==2.3.0
+
+# Database URL parsing (Heroku compatibility)
+dj-database-url==2.1.0
+
+# ============================================================================
+# ENVIRONMENT & CONFIGURATION
+# ============================================================================
+
+# Environment variable management
+python-dotenv==1.0.0
+
+# Configuration validation
+pydantic==2.5.0
+pydantic-settings==2.1.0
+
+# ============================================================================
+# WEB SERVER & DEPLOYMENT
+# ============================================================================
+
+# WSGI/ASGI server for production
+gunicorn==21.2.0
+
+# Async support for gunicorn
+uvloop==0.19.0
+
+# Gevent for better concurrency (Heroku recommended)
+gevent==23.9.1
+
+# ============================================================================
+# LOGGING & MONITORING
+# ============================================================================
+
+# Structured logging
+structlog==23.2.0
+
+# Error tracking (optional - set SENTRY_DSN to enable)
+sentry-sdk==1.40.0
+
+# ============================================================================
+# PERFORMANCE & OPTIMIZATION
+# ============================================================================
+
+# Fast JSON serialization
+orjson==3.9.10
+
+# Connection pooling optimization
+sqlalchemy-pool==1.0.0
+
+# Memory-efficient data processing
+ijson==3.2.3
+
+# ============================================================================
+# SECURITY
+# ============================================================================
+
+# Secure random generation
+secrets
+
+# Password hashing
+passlib[bcrypt]==1.7.4
+
+# ============================================================================
+# DATE & TIME HANDLING
+# ============================================================================
+
+# Enhanced date/time handling
+python-dateutil==2.8.2
+pytz==2023.3
+
+# ============================================================================
+# HTTP CLIENT (for external API calls)
+# ============================================================================
+
+# Modern HTTP client
+httpx==0.25.2
+
+# Async HTTP support
+aiohttp==3.9.1
+
+# ============================================================================
+# CACHING (OPTIONAL)
+# ============================================================================
+
+# In-memory caching
+cachetools==5.3.2
+
+# Redis client (if Redis addon is added to Heroku)
+redis==5.0.1
+
+# ============================================================================
+# VALIDATION & SERIALIZATION
+# ============================================================================
+
+# Data validation
+jsonschema==4.20.0
+
+# UUID handling
+uuid
+
+# ============================================================================
+# COMMAND LINE UTILITIES
+# ============================================================================
+
+# CLI framework for management commands
+click==8.1.7
+
+# Progress bars for data operations
+tqdm==4.66.1
+
+# ============================================================================
+# HEROKU SPECIFIC OPTIMIZATIONS
+# ============================================================================
+
+# Heroku-specific database utilities
+psycogreen==1.0.2
+
+# Whitenoise for static file serving
+whitenoise==6.6.0
+
+# ============================================================================
+# VERSION CONSTRAINTS FOR STABILITY
+# ============================================================================
+
+# Note: All versions are pinned for production stability
+# Test thoroughly before upgrading any dependencies
+
+# Python version requirement: 3.11.8 (see runtime.txt)
+# Tested on Heroku-22 stack
+
+# ============================================================================
+# OPTIONAL DEVELOPMENT TOOLS (commented out for production)
+# ============================================================================
+
+# Uncomment these for development/debugging deployments:
+# pytest==7.4.3
+# pytest-asyncio==0.21.1
+# ipython==8.17.2
+# jupyter==1.0.0
+
+# ============================================================================
+# SECURITY NOTES
+# ============================================================================
+
+# Always use the latest security patches
+# Regularly audit dependencies with: pip-audit
+# Consider using: safety check
+
+# ============================================================================
+# PERFORMANCE NOTES
+# ============================================================================
+
+# For high-traffic applications, consider:
+# 1. Adding Redis for caching
+# 2. Using a CDN for static assets
+# 3. Implementing database read replicas
+# 4. Using Heroku's horizontal scaling
+
+# ============================================================================
+# INSTALLATION COMMANDS
+# ============================================================================
+
+# Production installation:
+# pip install -r deployment/production_requirements.txt
+
+# With caching for faster builds:
+# pip install --cache-dir=/tmp/pip-cache -r deployment/production_requirements.txt

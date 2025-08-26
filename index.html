@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TFT Composition Analysis</title>
+    <script src="https://unpkg.com/htmx.org@1.9.10"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⚔️</text></svg>">
+</head>
+<body class="bg-gray-100">
+    <div class="container mx-auto px-4 py-8">
+        <h1 class="text-3xl font-bold text-center mb-8 flex items-center justify-center gap-2">
+            <span>⚔️</span>
+            TFT Composition Analysis
+        </h1>
+        
+        <!-- Tab Navigation -->
+        <div class="border-b border-gray-200 mb-6">
+            <nav class="-mb-px flex space-x-8">
+                <button id="overview-tab" class="tab-button active py-2 px-1 border-b-2 border-blue-500 text-blue-600 font-medium" onclick="showTab('overview')">
+                    📊 Overview
+                </button>
+                <button id="clusters-tab" class="tab-button py-2 px-1 border-b-2 border-transparent text-gray-500 hover:text-gray-700" onclick="showTab('clusters')">
+                    🎯 Clusters
+                </button>
+                <button id="query-tab" class="tab-button py-2 px-1 border-b-2 border-transparent text-gray-500 hover:text-gray-700" onclick="showTab('query')">
+                    🔍 Query
+                </button>
+                <button id="upload-tab" class="tab-button py-2 px-1 border-b-2 border-transparent text-gray-500 hover:text-gray-700" onclick="showTab('upload')">
+                    📤 Upload
+                </button>
+            </nav>
+        </div>
+
+        <!-- Tab Content -->
+        <div id="tab-content">
+            <!-- Overview Tab -->
+            <div id="overview-content" class="tab-content">
+                <h2 class="text-2xl font-semibold mb-6">Dataset Overview</h2>
+                
+                <!-- Database Status -->
+                <div id="db-status" class="mb-6">
+                    <div hx-get="/api/status" hx-trigger="load" hx-target="#db-status-content">
+                        <div id="db-status-content" class="bg-white p-4 rounded-lg shadow">
+                            <div class="animate-pulse">Loading database status...</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Statistics Cards -->
+                <div id="stats-cards" class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div hx-get="/api/stats" hx-trigger="load" hx-target="#stats-cards">
+                        <div class="bg-white p-6 rounded-lg shadow">
+                            <div class="animate-pulse">Loading statistics...</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Clusters Tab -->
+            <div id="clusters-content" class="tab-content hidden">
+                <h2 class="text-2xl font-semibold mb-6">Cluster Analysis</h2>
+                
+                <!-- Cluster Selection -->
+                <div class="mb-6">
+                    <label class="block text-sm font-medium text-gray-700 mb-2">Select a cluster to view details:</label>
+                    <select id="cluster-select" class="block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm bg-white" 
+                            hx-get="/api/clusters/details" 
+                            hx-include="this" 
+                            hx-target="#cluster-details">
+                        <option value="">Loading clusters...</option>
+                    </select>
+                </div>
+
+                <!-- Cluster Details -->
+                <div id="cluster-details" class="bg-white p-6 rounded-lg shadow">
+                    <p class="text-gray-500">Select a cluster to view details</p>
+                </div>
+            </div>
+
+            <!-- Query Tab -->
+            <div id="query-content" class="tab-content hidden">
+                <h2 class="text-2xl font-semibold mb-6">TFT Query Interface</h2>
+                <p class="text-gray-600 mb-6">Enter your TFT query using SimpleTFTQuery with comprehensive filtering capabilities</p>
+
+                <!-- Query Form -->
+                <div class="bg-white p-6 rounded-lg shadow mb-6">
+                    <form hx-post="/api/query" hx-target="#query-results">
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Query:</label>
+                        <textarea name="query" rows="6" 
+                                  placeholder="SimpleTFTQuery().add_unit('Aphelios').get_stats()"
+                                  class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm font-mono text-sm"></textarea>
+                        <button type="submit" class="mt-4 bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700">
+                            Execute Query
+                        </button>
+                    </form>
+                </div>
+
+                <!-- Documentation -->
+                <details class="bg-white p-6 rounded-lg shadow mb-6">
+                    <summary class="text-lg font-medium cursor-pointer">📖 Query Documentation</summary>
+                    <div class="mt-4 space-y-4 text-sm">
+                        <div>
+                            <h3 class="font-semibold">Filter Methods</h3>
+                            <ul class="list-disc list-inside mt-2 space-y-1">
+                                <li><code>add_unit(unit_id, must_have=True)</code> - Unit presence/absence</li>
+                                <li><code>add_trait(trait_name, min_tier=1, max_tier=4)</code> - Trait tier</li>
+                                <li><code>add_player_level(min_level=1, max_level=10)</code> - Player level range</li>
+                                <li><code>add_augment(augment_id)</code> - Specific augment</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h3 class="font-semibold">Logical Operations</h3>
+                            <ul class="list-disc list-inside mt-2 space-y-1">
+                                <li><code>or_(other_queries)</code> - Combine with OR logic</li>
+                                <li><code>not_(other_query=None)</code> - NOT logic</li>
+                                <li><code>xor(other_query)</code> - XOR logic</li>
+                            </ul>
+                        </div>
+                    </div>
+                </details>
+
+                <!-- Query Results -->
+                <div id="query-results"></div>
+            </div>
+
+            <!-- Upload Tab -->
+            <div id="upload-content" class="tab-content hidden">
+                <h2 class="text-2xl font-semibold mb-6">Data Upload</h2>
+                <p class="text-gray-600 mb-6">Upload TFT match data efficiently to the database</p>
+
+                <!-- Upload Form -->
+                <div class="bg-white p-6 rounded-lg shadow">
+                    <form hx-post="/api/upload" hx-encoding="multipart/form-data" hx-target="#upload-results">
+                        <div class="mb-4">
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Choose a JSONL file</label>
+                            <input type="file" name="file" accept=".jsonl" 
+                                   class="block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100">
+                        </div>
+                        
+                        <div class="grid grid-cols-2 gap-4 mb-4">
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Batch Size</label>
+                                <select name="batch_size" class="block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm bg-white">
+                                    <option value="100">100</option>
+                                    <option value="500" selected>500</option>
+                                    <option value="1000">1000</option>
+                                </select>
+                            </div>
+                            <div class="flex items-center">
+                                <input type="checkbox" name="skip_raw_data" id="skip_raw" checked 
+                                       class="h-4 w-4 text-blue-600 border-gray-300 rounded">
+                                <label for="skip_raw" class="ml-2 text-sm text-gray-700">Skip raw data storage (saves 80% space)</label>
+                            </div>
+                        </div>
+                        
+                        <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700">
+                            🚀 Upload to Database
+                        </button>
+                    </form>
+                </div>
+
+                <!-- Upload Results -->
+                <div id="upload-results" class="mt-6"></div>
+
+                <!-- Database Status -->
+                <div class="mt-8 bg-white p-6 rounded-lg shadow">
+                    <h3 class="text-lg font-medium mb-4">📊 Database Status</h3>
+                    <div hx-get="/api/db-status" hx-trigger="load" hx-target="this">
+                        <div class="animate-pulse">Loading database status...</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function showTab(tabName) {
+            // Hide all tab contents
+            document.querySelectorAll('.tab-content').forEach(content => {
+                content.classList.add('hidden');
+            });
+            
+            // Remove active class from all tabs
+            document.querySelectorAll('.tab-button').forEach(button => {
+                button.classList.remove('active', 'border-blue-500', 'text-blue-600');
+                button.classList.add('border-transparent', 'text-gray-500');
+            });
+            
+            // Show selected tab content
+            document.getElementById(tabName + '-content').classList.remove('hidden');
+            
+            // Add active class to selected tab
+            const activeTab = document.getElementById(tabName + '-tab');
+            activeTab.classList.add('active', 'border-blue-500', 'text-blue-600');
+            activeTab.classList.remove('border-transparent', 'text-gray-500');
+        }
+
+        // Load cluster options on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            fetch('/api/clusters/list')
+                .then(response => response.json())
+                .then(data => {
+                    const select = document.getElementById('cluster-select');
+                    select.innerHTML = '<option value="">Select a cluster...</option>';
+                    data.clusters.forEach(cluster => {
+                        const option = document.createElement('option');
+                        option.value = cluster.id;
+                        option.textContent = `${cluster.id}: ${cluster.name}`;
+                        select.appendChild(option);
+                    });
+                })
+                .catch(error => {
+                    console.error('Error loading clusters:', error);
+                });
+        });
+    </script>
+</body>
+</html>

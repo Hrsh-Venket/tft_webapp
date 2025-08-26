@@ -1,0 +1,24 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(rm:*)",
+      "Bash(mkdir:*)",
+      "Bash(find:*)",
+      "Bash(python:*)",
+      "Bash(pip install:*)",
+      "Bash(timeout 10 streamlit run streamlit_app.py --server.headless true --server.port 8501)",
+      "Bash(timeout 5 streamlit run streamlit_app.py --server.headless true --server.port 8502)",
+      "Bash(timeout 5 streamlit run streamlit_app.py --server.headless true --server.port 8503 --server.runOnSave false)",
+      "Bash(streamlit run:*)",
+      "Bash(timeout 5 streamlit run streamlit_app.py --server.headless true --server.port 8504)",
+      "Bash(git pull:*)",
+      "Bash(git push:*)",
+      "Bash(git add:*)",
+      "Bash(git commit:*)",
+      "Bash(set DATABASE_URL=postgresql://postgres:TFT_webapp123@db.gnyvkxdwlcojkgsarksr.supabase.co:5432/postgres)",
+      "Bash(del test_query_fix.py)",
+      "Bash(del:*)"
+    ],
+    "deny": []
+  }
+}
